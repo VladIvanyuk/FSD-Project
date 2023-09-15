@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack --env mode=production",
-    "build:dev": "webpack --env mode=development"
+    "build:dev": "webpack --env mode=development",
+    "component": "hygen new component"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "@types/webpack-dev-server": "^4.7.2",
     "css-loader": "^6.6.0",
     "html-webpack-plugin": "^5.5.0",
+    "hygen": "^6.2.11",
     "mini-css-extract-plugin": "^2.5.3",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
@@ -41,6 +43,7 @@
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1"
   }
 }

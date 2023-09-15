@@ -6,5 +6,7 @@ export const buildDevServer = (options: IBuildOptions): DevServerConfiguration =
     return {
         port: PORT,
         open: true,
+        // позволяет ходить по роутам через прямой ввод url в адресной строке
+        historyApiFallback: true
     }
 }
