@@ -1,0 +1,11 @@
+@import './normalize.scss';
+@import './variables/global.scss';
+@import './themes/normal.scss';
+@import './themes/dark.scss';
+
+.app {
+    min-height: 100vh;
+    padding: 30px;
+    font: var(--font-m);
+    background: var(--bg-color);
+}
