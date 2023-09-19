@@ -22,7 +22,7 @@ export const buildWebpackConfig = (
     module: {
       rules: buildLoaders(options),
     },
-    resolve: buildResolvers(),
+    resolve: buildResolvers(options),
 
     // после сборки, при наличии ошибок в коде, показывает в каком именно файле ошибка (https://webpack.js.org/guides/development/#using-source-maps)
     devtool: isDev ? "inline-source-map" : undefined,
