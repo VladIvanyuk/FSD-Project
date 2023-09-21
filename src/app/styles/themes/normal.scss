@@ -1,4 +1,8 @@
 .app.light {
-    background-color: var(--bg-color-light);
-    color: var(--primary-color-light);
+    --bg-color: #e7e7e7;
+    --primary-color: #000000;
+    --secondary-color: #0449E0;
+    --inverted-bg-color: #000;
+    --inverted-primary-color: #12f898;
+    --inverted-secondary-color: #350ba8;
 }
