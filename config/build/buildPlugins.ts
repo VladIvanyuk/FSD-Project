@@ -3,7 +3,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack from "webpack";
 import { TBuildPaths } from "./types/config";
 
-export const buildPlugins = (paths: TBuildPaths): webpack.WebpackPluginInstance[] => {
+export const buildPlugins = (paths: TBuildPaths, isDev: boolean): webpack.WebpackPluginInstance[] => {
     return [
         new HtmlWebpackPlugin({
             // шаблон страницы для build/index.html
@@ -14,5 +14,8 @@ export const buildPlugins = (paths: TBuildPaths): webpack.WebpackPluginInstance[
             filename: 'css/[name].[contenthash:8].css',
             chunkFilename: 'css/[name].[contenthash:8].css'
         }),
+        new webpack.DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev)
+        })
     ]
 }

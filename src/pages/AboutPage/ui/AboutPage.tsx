@@ -1,9 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import styles from './AboutPage.module.scss';
 
 export const AboutPage = () => {
+  const {t} = useTranslation('about');
+
   return (
     <div>
-      ABOUT PAGE!!!
+      {t('О сайте')}
     </div>
   );
 };
