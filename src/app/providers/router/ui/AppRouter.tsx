@@ -8,7 +8,13 @@ export const AppRouter: FC = () => {
       <Suspense fallback="Loading...">
         <Routes>
           {routeConfig.map((el) => (
-            <Route key={el.path} path={el.path} element={el.element} />
+            <Route
+              key={el.path}
+              path={el.path}
+              element={
+                  <div className="page-wrapper">{el.element}</div>
+              }
+            />
           ))}
         </Routes>
       </Suspense>
