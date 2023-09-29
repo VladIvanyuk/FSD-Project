@@ -1,21 +1,21 @@
-declare module "*.scss";
-declare module "*.svg" {
+declare module '*.scss';
+declare module '*.svg' {
   const svg: React.FunctionComponent<React.SVGAttributes<SVGAElement>>;
   export default svg;
 }
-declare module "*.png" {
+declare module '*.png' {
   const value: string;
   export default value;
 }
-declare module "*.jpg" {
+declare module '*.jpg' {
   const value: string;
   export default value;
 }
-declare module "*.jpeg" {
+declare module '*.jpeg' {
   const value: string;
   export default value;
 }
-declare module "*.gif" {
+declare module '*.gif' {
   const value: string;
   export default value;
 }
