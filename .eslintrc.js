@@ -5,7 +5,8 @@ module.exports = {
     },
     "extends": [
         "standard-with-typescript",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:i18next/recommended",
     ],
     "overrides": [
         {
@@ -26,6 +27,8 @@ module.exports = {
     },
     "plugins": [
         "react",
+        "i18next",
+        "@typescript-eslint"
         
     ],
     "rules": {
@@ -38,7 +41,7 @@ module.exports = {
         "react/jsx-indent": [2, 4],
         // "indent": [1, 4],
         "no-unused-vars": "warn",
-        
+        "i18next/no-literal-string": ['error', {markupOnly: true}]
     },
     "globals": {
         IS_DEV: true

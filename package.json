@@ -10,7 +10,9 @@
     "build:dev": "webpack --env mode=development",
     "component": "hygen new component",
     "lint:ts:fix": "npx eslint \"**/*.{ts,tsx}\" --fix",
-    "lint:ts": "npx eslint \"**/*.{ts,tsx}\""
+    "lint:ts": "npx eslint \"**/*.{ts,tsx}\"",
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
+    "lint:scss": "npx eslint \"**/*.{ts,tsx}\""
   },
   "repository": {
     "type": "git",
@@ -35,6 +37,7 @@
     "css-loader": "^6.6.0",
     "eslint": "^8.50.0",
     "eslint-config-standard-with-typescript": "^39.1.0",
+    "eslint-plugin-i18next": "^5.1.2",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-n": "^16.1.0",
     "eslint-plugin-promise": "^6.1.1",
@@ -46,6 +49,8 @@
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
+    "stylelint": "^14.5.3",
+    "stylelint-config-standard-scss": "^3.0.0",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5",
