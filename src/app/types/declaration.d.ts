@@ -20,4 +20,4 @@ declare module '*.gif' {
   export default value;
 }
 
-declare const __IS_DEV__: boolean;
+declare const IS_DEV: boolean;

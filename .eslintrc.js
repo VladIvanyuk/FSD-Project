@@ -37,6 +37,10 @@ module.exports = {
         "@typescript-eslint/semi": "off",
         "react/jsx-indent": [2, 4],
         // "indent": [1, 4],
-        "no-unused-vars": "warn"
+        "no-unused-vars": "warn",
+        
+    },
+    "globals": {
+        IS_DEV: true
     }
 }

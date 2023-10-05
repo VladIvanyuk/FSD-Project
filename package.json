@@ -8,7 +8,9 @@
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
-    "component": "hygen new component"
+    "component": "hygen new component",
+    "lint:ts:fix": "npx eslint \"**/*.{ts,tsx}\" --fix",
+    "lint:ts": "npx eslint \"**/*.{ts,tsx}\""
   },
   "repository": {
     "type": "git",
