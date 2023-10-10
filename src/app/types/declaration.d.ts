@@ -1,23 +1,8 @@
 declare module '*.scss';
-declare module '*.svg' {
-  const svg: React.FunctionComponent<React.SVGAttributes<SVGAElement>>;
-  export default svg;
-}
-declare module '*.png' {
-  const value: string;
-  export default value;
-}
-declare module '*.jpg' {
-  const value: string;
-  export default value;
-}
-declare module '*.jpeg' {
-  const value: string;
-  export default value;
-}
-declare module '*.gif' {
-  const value: string;
-  export default value;
-}
+declare module '*.svg';
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.gif';
 
 declare const IS_DEV: boolean;

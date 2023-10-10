@@ -9,20 +9,20 @@ interface ISidebarProps {
 }
 
 export const Sidebar: FC<ISidebarProps> = (props) => {
-  const [collapsed, setCollapsed] = useState(false);
-  const { t } = useTranslation();
-  const toggleCollapse = (): void => {
-    setCollapsed((prev) => !prev)
-  }
+    const [collapsed, setCollapsed] = useState(false);
+    const { t } = useTranslation();
+    const toggleCollapse = (): void => {
+        setCollapsed((prev) => !prev)
+    }
 
-  const { className } = props;
-  return (
-      <div className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}>
-          <button onClick={toggleCollapse}>{t('Боковое меню')}</button>
-          <div className={cls.switchers}>
-              <ThemeSwitcher />
-              <LangSwitcher />
-          </div>
-      </div>
-  )
+    const { className } = props;
+    return (
+        <div className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}>
+            <button onClick={toggleCollapse}>{t('Боковое меню')}</button>
+            <div className={cls.switchers}>
+                <ThemeSwitcher />
+                <LangSwitcher />
+            </div>
+        </div>
+    )
 }

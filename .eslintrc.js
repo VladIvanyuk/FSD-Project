@@ -1,12 +1,14 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "standard-with-typescript",
         "plugin:react/recommended",
         "plugin:i18next/recommended",
+        "eslint:recommended"
     ],
     "overrides": [
         {
@@ -37,11 +39,12 @@ module.exports = {
         "@typescript-eslint/prefer-nullish-coalescing": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
         "semi": "off",
+        "@typescript-eslint/indent": "off",
         "@typescript-eslint/semi": "off",
-        "react/jsx-indent": [2, 4],
-        // "indent": [1, 4],
+        // "react/jsx-indent": [2, 4],
+        "indent": ['error', 4],
         "no-unused-vars": "warn",
-        "i18next/no-literal-string": ['error', {onlyAttribute: ['']}]
+        "i18next/no-literal-string": ['warn', {onlyAttribute: ['']}]
     },
     "globals": {
         IS_DEV: true

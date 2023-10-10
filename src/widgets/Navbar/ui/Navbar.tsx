@@ -9,14 +9,14 @@ interface INavbarProps {
 }
 
 export const Navbar: FC<INavbarProps> = () => {
-  const { t } = useTranslation();
+    const { t } = useTranslation();
 
-  return (
-      <nav className={classNames(cls.navbar)}>
-          <div>
-              <AppLink theme={AppLinkTheme.PRIMARY} to={'/'} className={cls.mainLink}>{t('Главная')}</AppLink>
-              <AppLink theme={AppLinkTheme.PRIMARY} to={'/about'}>{t('О сайте')}</AppLink>
-          </div>
-      </nav>
-  );
+    return (
+        <nav className={classNames(cls.navbar)}>
+            <div>
+                <AppLink theme={AppLinkTheme.PRIMARY} to={'/'} className={cls.mainLink}>{t('Главная')}</AppLink>
+                <AppLink theme={AppLinkTheme.PRIMARY} to={'/about'}>{t('О сайте')}</AppLink>
+            </div>
+        </nav>
+    );
 };
