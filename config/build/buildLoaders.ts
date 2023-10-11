@@ -29,7 +29,8 @@ export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
                     modules: {
                         // чтобы css модули работали только для .modules. файлов
                         auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-                        localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]'
+                        localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
+                        exportLocalsConvention: 'camelCase'
                     }
                 }
             },

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import cls from './navbar.module.scss';
 import { classNames } from 'helpers/classNames/classNames';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { AppLink, AppLinkTheme } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 
 interface INavbarProps {
