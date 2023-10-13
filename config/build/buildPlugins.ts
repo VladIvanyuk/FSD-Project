@@ -18,6 +18,8 @@ export const buildPlugins = (paths: TBuildPaths, isDev: boolean): webpack.Webpac
         new webpack.DefinePlugin({
             IS_DEV: JSON.stringify(isDev)
         }),
-        new ReactRefreshWebpackPlugin()
+        new ReactRefreshWebpackPlugin({
+            overlay: false
+        })
     ]
 }

@@ -8,6 +8,9 @@ export const buildDevServer = (options: IBuildOptions): DevServerConfiguration =
         open: true,
         // позволяет ходить по роутам через прямой ввод url в адресной строке
         historyApiFallback: true,
-        hot: true
+        hot: true,
+        client: {
+            overlay: false
+        }
     }
 }
