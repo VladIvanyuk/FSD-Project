@@ -7,7 +7,6 @@ export const AboutPage: FC = () => {
     return (
         <div>
             {t('О сайте')}
-            {t('Перевод')}
         </div>
     );
 };

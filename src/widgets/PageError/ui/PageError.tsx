@@ -6,10 +6,9 @@ interface IPageErrorProps {
   className?: string
 }
 
-export const PageError: FC<IPageErrorProps> = (props) => {
-    const { className } = props;
+export const PageError: FC<IPageErrorProps> = () => {
     return (
-        <div className={classNames(cls.errorMessage, {}, [className])}>
+        <div className={classNames(cls.errorMessage, {}, [])}>
             Упс, что то пошло не так...
         </div>
     )
