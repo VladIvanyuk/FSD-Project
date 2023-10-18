@@ -19,6 +19,17 @@ export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
         type: 'asset/resource'
     }
 
+    const babelLoader = {
+        test: /\.(js|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env']
+            }
+        }
+    }
+
     const cssCloader = {
         test: /\.s[ac]ss$/i,
         use: [
@@ -38,5 +49,5 @@ export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
         ]
     };
 
-    return [assetsLoaders, svgLoader, typescriptLoader, cssCloader];
+    return [assetsLoaders, svgLoader, babelLoader, typescriptLoader, cssCloader];
 };
