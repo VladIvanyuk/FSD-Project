@@ -14,6 +14,11 @@
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "lint:scss": "npx eslint \"**/*.{ts,tsx}\""
   },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VladIvanyuk/frontend-project.git"
