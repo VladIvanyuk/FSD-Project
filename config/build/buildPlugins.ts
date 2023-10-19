@@ -1,6 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import webpack from 'webpack';
 import { TBuildPaths } from './types/config';
 
@@ -20,6 +21,9 @@ export const buildPlugins = (paths: TBuildPaths, isDev: boolean): webpack.Webpac
         }),
         new ReactRefreshWebpackPlugin({
             overlay: false
+        }),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false
         })
     ]
 }
