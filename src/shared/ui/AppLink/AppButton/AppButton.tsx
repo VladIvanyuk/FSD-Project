@@ -14,7 +14,7 @@ export enum ThemeButton {
 export const AppButton: FC<IAppButtonProps> = (props) => {
     const { className, children, theme, ...otherProps } = props;
     return (
-        <button className={classNames(cls.appButton, {}, [className, cls[theme]])} {...otherProps}>
+        <button className={classNames('', {}, [className, cls[theme]])} {...otherProps}>
             {children}
         </button>
     )

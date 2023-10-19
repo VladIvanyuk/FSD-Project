@@ -1,8 +1,3 @@
-/*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/configuration
- */
-
 export default {
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
     clearMocks: true,
@@ -10,14 +5,17 @@ export default {
     testEnvironment: 'jsdom',
     testPathIgnorePatterns: ['\\\\node_modules\\\\'],
     moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
-    moduleDirectories: ['node_modules'],
-    roots: [
-        '../../'
-    ],
+    moduleDirectories: ['node_modules', 'src'],
+    moduleNameMapper: {
+        '\\.(scss|css)$': '<rootDir>config/jest/styleMock.ts'
+    },
+    rootDir: '../../',
     preset: 'ts-jest',
     transform: {
         '^.+\\.ts?$': 'ts-jest'
-    }
+    },
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts']
+
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
