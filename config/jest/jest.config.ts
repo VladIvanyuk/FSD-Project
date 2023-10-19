@@ -7,7 +7,7 @@ export default {
     moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
     moduleDirectories: ['node_modules', 'src'],
     moduleNameMapper: {
-        '\\.(scss|css)$': '<rootDir>config/jest/styleMock.ts'
+        '\\.(scss|css)$': 'identity-obj-proxy'
     },
     rootDir: '../../',
     preset: 'ts-jest',

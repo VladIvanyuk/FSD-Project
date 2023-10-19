@@ -23,15 +23,20 @@ module.exports = {
             }
         }
     ],
+    parser: '@typescript-eslint/parser',
     "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module",
+        ecmaFeatures: {
+            jsx: true,
+        },
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        project: ['./tsconfig.json'],
+        tsconfigRootDir: './',
     },
     "plugins": [
         "react",
         "i18next",
         "@typescript-eslint"
-        
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
@@ -48,5 +53,5 @@ module.exports = {
     },
     "globals": {
         IS_DEV: true
-    }
+    },
 }
