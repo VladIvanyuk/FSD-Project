@@ -7,7 +7,8 @@ export default {
     moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
     moduleDirectories: ['node_modules', 'src'],
     moduleNameMapper: {
-        '\\.(scss|css)$': 'identity-obj-proxy'
+        '\\.(scss|css)$': 'identity-obj-proxy',
+        "^.+\\.svg$": '<rootDir>config/jest/jestEmptyCompForSVG.tsx' 
     },
     rootDir: '../../',
     preset: 'ts-jest',
