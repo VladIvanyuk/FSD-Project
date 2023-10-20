@@ -1,6 +1,6 @@
-import React from "react";
+import { ReactNode } from 'react';
 
-function jestEmptyCompForSVG () {
+function jestEmptyCompForSVG (): ReactNode {
     return <div></div>
 }
 
