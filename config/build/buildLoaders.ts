@@ -1,9 +1,9 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import { IBuildOptions } from './types/config';
+import { buildCssLoader } from './loaders/buildCssLoaders';
 
 export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
-    const { isDev } = options;
+    const { IS_DEV } = options;
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -19,6 +19,8 @@ export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
         type: 'asset/resource'
     }
 
+    const cssLoader = buildCssLoader(IS_DEV);
+
     const babelLoader = {
         test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
@@ -30,24 +32,5 @@ export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
         }
     }
 
-    const cssCloader = {
-        test: /\.s[ac]ss$/i,
-        use: [
-            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-            {
-                loader: 'css-loader',
-                options: {
-                    modules: {
-                        // чтобы css модули работали только для .modules. файлов
-                        auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-                        localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
-                        exportLocalsConvention: 'camelCase'
-                    }
-                }
-            },
-            'sass-loader'
-        ]
-    };
-
-    return [assetsLoaders, svgLoader, babelLoader, typescriptLoader, cssCloader];
+    return [assetsLoaders, svgLoader, babelLoader, typescriptLoader, cssLoader];
 };
