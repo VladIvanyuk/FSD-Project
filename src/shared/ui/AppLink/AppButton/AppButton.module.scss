@@ -5,3 +5,11 @@
     border: none;
     cursor: pointer;
 }
+
+.outline {
+    padding: 10px 15px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background: none;
+    font-size: var(--font-size-m);
+}

@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react';
+import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator';
 
 const preview: Preview = {
     parameters: {
@@ -9,7 +10,8 @@ const preview: Preview = {
                 date: /Date$/i
             }
         }
-    }
+    },
+    decorators: [(Story) => StyleDecorator(Story as any)]
 };
 
 export default preview;

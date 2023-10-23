@@ -9,6 +9,7 @@ interface IAppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export enum ThemeButton {
   CLEAR = 'clear',
+  OUTLINE = 'outline'
 }
 export const AppButton: FC<IAppButtonProps> = (props) => {
     const { className, children, theme, ...otherProps } = props;
