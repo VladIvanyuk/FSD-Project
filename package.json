@@ -13,8 +13,8 @@
     "lint:ts": "npx eslint \"**/*.{ts,tsx}\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "lint:scss": "npx eslint \"**/*.{ts,tsx}\"",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006 -c ./config/storybook",
+    "build-storybook": "storybook build -c ./config/storybook"
   },
   "jest": {
     "transform": {
