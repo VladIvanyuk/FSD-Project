@@ -49,7 +49,8 @@ module.exports = {
         // "react/jsx-indent": [2, 4],
         "indent": ['error', 4],
         "no-unused-vars": "warn",
-        "i18next/no-literal-string": ['warn', {onlyAttribute: ['']}]
+        "i18next/no-literal-string": ['warn', {onlyAttribute: ['']}],
+        "react/display-name": "off",
     },
     "globals": {
         IS_DEV: true

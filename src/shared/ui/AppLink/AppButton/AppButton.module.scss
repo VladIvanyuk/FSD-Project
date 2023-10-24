@@ -1,3 +1,7 @@
+.AppButton {
+    color: var(--primary-color);
+}
+
 .clear {
     margin: 0;
     padding: 0;
@@ -9,7 +13,6 @@
 .outline {
     padding: 10px 15px;
     border: 1px solid var(--primary-color);
-    color: var(--primary-color);
     background: none;
     font-size: var(--font-size-m);
 }
