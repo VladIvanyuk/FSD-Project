@@ -2,7 +2,6 @@ import type { StorybookConfig } from '@storybook/react-webpack5';
 import { buildCssLoader } from '../build/loaders/buildCssLoaders';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import { buildSvgLoader } from '../build/loaders/buildSvgLoader';
-import { RuleSetRule, WebpackOptionsApply } from 'webpack';
 
 const config: StorybookConfig = {
     stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
