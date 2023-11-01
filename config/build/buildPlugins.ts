@@ -6,9 +6,9 @@ import webpack from 'webpack';
 import { TBuildPaths } from './types/config';
 
 export const buildPlugins = (paths: TBuildPaths, IS_DEV: boolean): webpack.WebpackPluginInstance[] => {
-    return [
+    const plugins = [
         new HtmlWebpackPlugin({
-            // шаблон страницы для build/index.html
+        // шаблон страницы для build/index.html
             template: paths.html
         }),
         new webpack.ProgressPlugin(),
@@ -18,12 +18,20 @@ export const buildPlugins = (paths: TBuildPaths, IS_DEV: boolean): webpack.Webpa
         }),
         new webpack.DefinePlugin({
             IS_DEV: JSON.stringify(IS_DEV)
-        }),
-        new ReactRefreshWebpackPlugin({
-            overlay: false
-        }),
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false
-        })
-    ]
+        })];
+
+    if (IS_DEV) {
+        plugins.push(
+            new ReactRefreshWebpackPlugin({
+                overlay: false
+            })
+        )
+        plugins.push(
+            new BundleAnalyzerPlugin({
+                openAnalyzer: false
+            })
+        )
+    }
+
+    return plugins;
 }
