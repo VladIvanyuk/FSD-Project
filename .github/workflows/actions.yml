@@ -9,10 +9,10 @@ on:
       - main
 jobs:
   pipeline:
-    runs-on: [ubuntu-latest]
+    runs-on: [windows-2019]
     strategy:
       matrix:
-        node-version: [ 17.x ]
+        node-version: [ 16.x ]
 
     steps: 
       - uses: actions/checkout@v2
@@ -30,5 +30,7 @@ jobs:
         run: npm run lint:scss
       - name: Unit testing
         run: npm run test:unit
-      - name: Unit testing
-        run: npm run test:unit
+      - name: Build storybook
+        run: npm run build-storybook
+      - name: Storybook testing
+        run: npm run test:ui:ci
