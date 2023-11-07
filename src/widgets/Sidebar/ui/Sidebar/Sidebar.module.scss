@@ -2,22 +2,50 @@
     height: calc(100vh - var(--navbar-height));
     width: var(--sidebar-width);
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: var(--inverted-bg-color);
-    transition: width 0.3s ease;
+    background: var(--inverted-light-bg-color);
+    transition: width 0.2s ease;
 }
 
-.sidebar button {
-    width: fit-content;
+.switchers {
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
+
+    .switchers {
+        flex-direction: column;
+    }
 }
 
-.switchers {
-    align-self: center;
+.sidebarButton {
+    position: absolute;
+    bottom: 40px;
+    right: -32px;
+    background: var(--inverted-light-bg-color);
+}
+
+.margin {
+    margin-right: 20px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.items {
     display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+}
+
+.sidebarLink {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    fill: var(--inverted-primary-color);
 }

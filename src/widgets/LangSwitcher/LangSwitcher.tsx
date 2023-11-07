@@ -2,9 +2,10 @@ import { FC } from 'react';
 import { classNames } from 'helpers/classNames/classNames';
 import cls from './LangSwitcher.module.scss';
 import { useTranslation } from 'react-i18next';
-import { AppButton, ThemeButton } from 'shared/ui';
+import { AppButton, ButtonTheme } from 'shared/ui';
 interface ILangSwitcherProps {
   className?: string
+  isShort: boolean
 }
 
 export const LangSwitcher: FC<ILangSwitcherProps> = (props) => {
@@ -14,14 +15,14 @@ export const LangSwitcher: FC<ILangSwitcherProps> = (props) => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     };
-    const { className } = props;
+    const { className, isShort } = props;
     return (
         <AppButton
             className={classNames(cls.LangSwitcher, {}, [className])}
-            theme={ThemeButton.CLEAR}
+            theme={ButtonTheme.CLEAR}
             onClick={toggleLanguage}
         >
-            {t('Сменить язык')}
+            {t(isShort ? 'Короткий язык' : 'Обычный язык')}
         </AppButton>
     );
 };
