@@ -8,7 +8,8 @@ module.exports = {
         "standard-with-typescript",
         "plugin:react/recommended",
         "plugin:i18next/recommended",
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:react-hooks/recommended"
     ],
     "overrides": [
         {
@@ -36,7 +37,8 @@ module.exports = {
     "plugins": [
         "react",
         "i18next",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks"
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
@@ -51,6 +53,8 @@ module.exports = {
         "no-unused-vars": "warn",
         "i18next/no-literal-string": ['warn', {onlyAttribute: ['']}],
         "react/display-name": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error"
     },
     "globals": {
         IS_DEV: true
