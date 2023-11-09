@@ -18,7 +18,7 @@ export const Navbar: FC<INavbarProps> = () => {
         <nav className={classNames(cls.navbar)}>
             <div>
                 <AppButton onClick={() => { setIsOpenModal(true); }} theme={ButtonTheme.OUTLINE_INVERTED}>{t('Войти')}</AppButton>
-                <Modal isOpen={isOpenModal} onClose={() => { setIsOpenModal(false); }}>Форма авторизации</Modal>
+                {isOpenModal && <Modal onClose={() => { setIsOpenModal(false); }}>Форма авторизации</Modal>}
             </div>
         </nav>
     );

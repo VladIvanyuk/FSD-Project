@@ -13,15 +13,27 @@
     left: 0;
     right: 0;
     bottom: 0;
+    opacity: 0;
     z-index: var(--layout-z-index);
     background-color: rgb(0 0 0 / 60%);
+    transition: all 0.3s ease-in-out;
 }
 
 .content {
     position: relative;
+    scale: 0.2;
     padding: 10px;
     border-radius: 8px;
     background: var(--bg-color);
     z-index: var(--modal-content-z-index);
     color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.content-full {
+    scale: 1;
+}
+
+.layout-full {
+    opacity: 1;
 }
