@@ -52,6 +52,13 @@ export const Outline: Story = {
     }
 };
 
+export const OutlineInverted: Story = {
+    args: {
+        children: 'Button',
+        theme: ButtonTheme.OUTLINE_INVERTED
+    }
+};
+
 export const OutlineSizeM: Story = {
     args: {
         children: 'Button',

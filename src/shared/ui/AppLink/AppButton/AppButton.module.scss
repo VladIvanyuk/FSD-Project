@@ -3,6 +3,7 @@
     color: var(--primary-color);
     background-color: var(--bg-color);
     border: 1px solid var(--primary-color);
+    cursor: pointer;
 }
 
 .clear {
@@ -17,6 +18,13 @@
     border: 1px solid var(--primary-color);
     background: none;
     font-size: var(--font-size-m);
+}
+
+.outlineInverted {
+    border: 1px solid var(--inverted-primary-color);
+    background: none;
+    font-size: var(--font-size-m);
+    color: var(--inverted-primary-color);
 }
 
 .background {
