@@ -6,6 +6,6 @@ export const createReduxStore = (initialState?: IStateSchema): any => configureS
     reducer: {
         counter: counterReducer
     },
-    devTools: IS_DEV,
+    devTools: true,
     preloadedState: initialState
 })
