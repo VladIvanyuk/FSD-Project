@@ -16,8 +16,6 @@ export default {
         '^.+\\.ts?$': 'ts-jest'
     },
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
-
-    // A set of global variables that need to be available in all test environments
     globals: {
         IS_DEV: true
     }

@@ -25,9 +25,9 @@ export const Counter: FC<ICounterProps> = (props) => {
     }
     return (
         <div className={classNames(cls.Counter, {}, [className])}>
-            <h1>{count}</h1>
-            <AppButton onClick={incrementHandler} theme={''}>increment</AppButton>
-            <AppButton onClick={decrementHandler} theme={''}>decrement</AppButton>
+            <h1 data-testid='value-title'>{count}</h1>
+            <AppButton data-testid='increment-btn' onClick={incrementHandler} theme={''}>increment</AppButton>
+            <AppButton data-testid='decrement-btn' onClick={decrementHandler} theme={''}>decrement</AppButton>
         </div>
     )
 }
