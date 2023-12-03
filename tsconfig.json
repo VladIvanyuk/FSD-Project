@@ -42,5 +42,6 @@
     "./webpack.config.ts",
     "src",
     "config",
+    "json-server",
   ]
 }
