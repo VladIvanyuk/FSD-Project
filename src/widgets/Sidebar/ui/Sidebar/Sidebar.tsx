@@ -4,7 +4,7 @@ import cls from './Sidebar.module.scss'
 import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ThemeSwitcher'
 import { AppButton, AppLink, AppLinkTheme, ButtonTheme } from 'shared/ui'
-import { ButtonSize } from 'shared/ui/AppLink/AppButton/AppButton'
+import { ButtonSize } from 'shared/ui/AppButton/AppButton'
 import { useTranslation } from 'react-i18next'
 import { MainIcon, AboutIcon } from 'shared/assets';
 

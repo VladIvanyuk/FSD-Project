@@ -7,5 +7,8 @@
     "Короткий язык": "EN",
     "Обычный язык": "English",
     "Войти": "Enter",
-    "О нас": "About us"
+    "О нас": "About us",
+    "Логин": "Login",
+    "Пароль": "Password",
+    "Авторизация": "Authorization"
 }

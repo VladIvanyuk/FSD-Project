@@ -7,7 +7,7 @@ import { useTheme } from 'shared/config/themeContext'
 interface IModalProps {
   className?: string
   children?: ReactNode
-  onClose: () => void
+  onClose?: () => void
 }
 
 export const Modal: FC<IModalProps> = (props) => {

@@ -2,9 +2,9 @@
 import { FC, useState } from 'react';
 import cls from './navbar.module.scss';
 import { classNames } from 'helpers/classNames/classNames';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { AppButton, ButtonTheme } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
+import { LoginModal } from 'features/AuthByUsername';
 
 interface INavbarProps {
   classNames?: string
@@ -18,7 +18,7 @@ export const Navbar: FC<INavbarProps> = () => {
         <nav className={classNames(cls.navbar)}>
             <div>
                 <AppButton onClick={() => { setIsOpenModal(true); }} theme={ButtonTheme.OUTLINE_INVERTED}>{t('Войти')}</AppButton>
-                {isOpenModal && <Modal onClose={() => { setIsOpenModal(false); }}>Форма авторизации</Modal>}
+                {isOpenModal && <LoginModal onClose={() => { setIsOpenModal(false); }} />}
             </div>
         </nav>
     );

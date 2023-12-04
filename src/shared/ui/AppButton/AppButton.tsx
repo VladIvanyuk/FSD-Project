@@ -4,7 +4,7 @@ import cls from './AppButton.module.scss'
 
 interface IAppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
-  theme: string
+  theme?: string
   square?: boolean
   size?: string
 }
