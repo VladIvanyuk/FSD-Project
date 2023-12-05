@@ -7,17 +7,16 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 interface IInputProps extends HTMLInputProps {
   className?: string
   value?: string
-  name: string
-  onChange?: (value: string, name: string) => void
+  onChange?: (value: string) => void
 }
 
 export const Input = memo((props: IInputProps) => {
     const { className, placeholder, value, onChange, type = 'text', name } = props;
     const onChangHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-        onChange?.(event.target.value, event.target.name)
+        onChange?.(event.target.value)
     }
     return (
-        <input name={name} value={value} placeholder={placeholder} type={type} onChange={onChangHandler} className={classNames(cls.Input, {}, [className])}>
+        <input value={value} placeholder={placeholder} type={type} onChange={onChangHandler} className={classNames(cls.Input, {}, [className])}>
 
         </input>
     )
