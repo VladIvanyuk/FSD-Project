@@ -6,13 +6,14 @@ import { AppButton } from 'shared/ui'
 import { Input } from 'shared/ui/Input/Input'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginActions } from '../../../model/slice/loginSlice'
-import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState'
+import { getLoginState } from '../../../model/selectors/getLoginState/getLoginState'
+import { loginByUsername } from '../../..//model/services/loginByUsername/loginByUsername'
 
 export const LoginForm = memo((props) => {
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
-    const { username, password } = useSelector(getLoginState)
+    const { username, password, isLoading, error } = useSelector(getLoginState)
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value))
@@ -22,11 +23,16 @@ export const LoginForm = memo((props) => {
         dispatch(loginActions.setPassword(value))
     }, [dispatch])
 
+    const onLoginClick = useCallback(() => {
+        dispatch(loginByUsername({ username, password }))
+    }, [dispatch, password, username])
+
     return (
         <div className={classNames(cls.LoginForm, {}, [])}>
+            <p>{error}</p>
             <Input placeholder={t('Логин')} onChange={onChangeUsername} value={username}/>
             <Input placeholder={t('Пароль')} onChange={onChangePassword} value={password}/>
-            <AppButton theme={''}>
+            <AppButton disabled={isLoading} onClick={onLoginClick} theme={''}>
                 {t('Войти')}
             </AppButton>
         </div>
