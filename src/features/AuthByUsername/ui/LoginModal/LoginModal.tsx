@@ -4,6 +4,7 @@ import cls from './LoginModal.module.scss'
 import { Modal } from 'shared/ui/Modal/Modal'
 import { LoginForm } from '../LoginForm/LoginModal/LoginForm'
 import { useTranslation } from 'react-i18next'
+import { Text } from 'shared/ui/Text/Text'
 
 interface ILoginModalProps {
   className?: string
@@ -15,7 +16,7 @@ export const LoginModal: FC<ILoginModalProps> = (props) => {
     const { t } = useTranslation();
     return (
         <Modal onClose={onClose} className={classNames(cls.LoginModal, {}, [className])}>
-            <p className={cls.loginFormTitle}>{t('Авторизация')}</p>
+            <Text title={t('Форма авторизации')} className={cls.loginFormTitle}></Text>
             <LoginForm />
         </Modal>
     )

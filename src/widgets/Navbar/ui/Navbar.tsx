@@ -5,6 +5,9 @@ import { classNames } from 'helpers/classNames/classNames';
 import { AppButton, ButtonTheme } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserAuthData, userActions } from 'entity/User';
+import { LOCALSTORAGE_USER_KEY } from 'shared/const/localstorage';
 
 interface INavbarProps {
   classNames?: string
@@ -13,13 +16,25 @@ interface INavbarProps {
 export const Navbar: FC<INavbarProps> = () => {
     const [isOpenModal, setIsOpenModal] = useState(false);
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const isAuth = useSelector(getUserAuthData);
+
+    const logout = () => {
+        dispatch(userActions.logout())
+        localStorage.removeItem(LOCALSTORAGE_USER_KEY);
+    }
 
     return (
         <nav className={classNames(cls.navbar)}>
-            <div>
-                <AppButton onClick={() => { setIsOpenModal(true); }} theme={ButtonTheme.OUTLINE_INVERTED}>{t('Войти')}</AppButton>
-                {isOpenModal && <LoginModal onClose={() => { setIsOpenModal(false); }} />}
-            </div>
+            { isAuth
+                ? <div>
+                    <AppButton onClick={logout} theme={ButtonTheme.OUTLINE_INVERTED}>{t('Выйти')}</AppButton>
+                </div>
+                : <div>
+                    <AppButton onClick={() => { setIsOpenModal(true); }} theme={ButtonTheme.OUTLINE_INVERTED}>{t('Войти')}</AppButton>
+                    {isOpenModal && <LoginModal onClose={() => { setIsOpenModal(false); }} />}
+                </div>
+            }
         </nav>
     );
 };
