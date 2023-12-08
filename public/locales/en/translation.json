@@ -11,5 +11,6 @@
     "О нас": "About us",
     "Логин": "Login",
     "Пароль": "Password",
-    "Форма авторизации": "Authorization form"
+    "Форма авторизации": "Authorization form",
+    "Ошибка": "You have entered an incorrect username or password!"
 }

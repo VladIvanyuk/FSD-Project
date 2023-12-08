@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string */
 import { FC, ReactNode, useEffect, useRef } from 'react'
 import { classNames } from 'helpers/classNames/classNames'
 import cls from './Modal.module.scss'

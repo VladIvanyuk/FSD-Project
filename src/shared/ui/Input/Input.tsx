@@ -11,13 +11,11 @@ interface IInputProps extends HTMLInputProps {
 }
 
 export const Input = memo((props: IInputProps) => {
-    const { className, placeholder, value, onChange, type = 'text', name } = props;
+    const { className, placeholder, value, onChange, type = 'text' } = props;
     const onChangHandler = (event: ChangeEvent<HTMLInputElement>): void => {
         onChange?.(event.target.value)
     }
     return (
-        <input value={value} placeholder={placeholder} type={type} onChange={onChangHandler} className={classNames(cls.Input, {}, [className])}>
-
-        </input>
+        <input value={value} placeholder={placeholder} type={type} onChange={onChangHandler} className={classNames(cls.Input, {}, [className])} />
     )
 })
