@@ -4,10 +4,20 @@ import { AppRouter } from './providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import './styles/index.scss';
-import { FC, Suspense } from 'react';
+import { FC, Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { userActions } from 'entity/User';
+import { LOCALSTORAGE_USER_KEY } from 'shared/const/localstorage';
 
 export const App: FC = () => {
     const { theme } = useTheme();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const user = localStorage.getItem(LOCALSTORAGE_USER_KEY);
+        dispatch(userActions.initAuthData(user))
+    }, [dispatch])
+
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback=''>

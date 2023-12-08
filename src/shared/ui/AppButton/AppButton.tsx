@@ -7,6 +7,7 @@ interface IAppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: string
   square?: boolean
   size?: string
+  disabled?: boolean
 }
 
 export enum ButtonTheme {
@@ -24,12 +25,13 @@ export enum ButtonSize {
 }
 
 export const AppButton: FC<IAppButtonProps> = (props) => {
-    const { className, children, theme, square, size, ...otherProps } = props;
+    const { className, children, theme, square, size, disabled, ...otherProps } = props;
     const mods: Record<string, boolean> = {
-        [cls.square]: square
+        [cls.square]: square,
+        [cls.disabled]: disabled
     }
     return (
-        <button className={classNames(cls.AppButton, mods, [className, cls[theme], cls[size]])} {...otherProps}>
+        <button disabled={disabled} className={classNames(cls.AppButton, mods, [className, cls[theme], cls[size]])} {...otherProps}>
             {children}
         </button>
     )

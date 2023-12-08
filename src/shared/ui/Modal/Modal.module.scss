@@ -22,7 +22,7 @@
 .content {
     position: relative;
     scale: 0.2;
-    padding: 25px;
+    padding: 50px;
     border-radius: 8px;
     background: var(--bg-color);
     z-index: var(--modal-content-z-index);
@@ -36,4 +36,10 @@
 
 .layout-full {
     opacity: 1;
+}
+
+.modalButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
 }

@@ -1,8 +1,10 @@
+/* eslint-disable i18next/no-literal-string */
 import { FC, ReactNode, useEffect, useRef } from 'react'
 import { classNames } from 'helpers/classNames/classNames'
 import cls from './Modal.module.scss'
 import { Portal } from '../Portal/Portal'
 import { useTheme } from 'shared/config/themeContext'
+import { AppButton } from '../AppButton/AppButton'
 
 interface IModalProps {
   className?: string
@@ -16,14 +18,13 @@ export const Modal: FC<IModalProps> = (props) => {
     const contentRef = useRef(null);
     const layoutRef = useRef(null);
     const ANIMATION_DELAY = 300;
-    console.log(theme)
 
     useEffect(() => {
         contentRef.current.classList.add(cls['content-full']);
         layoutRef.current.classList.add(cls['layout-full']);
     }, [])
 
-    const onCloseHandler = (): void => {
+    const onCloseHandler = () => {
         contentRef.current.classList.remove(cls['content-full']);
         layoutRef.current.classList.remove(cls['layout-full']);
         setTimeout(() => {
@@ -37,6 +38,7 @@ export const Modal: FC<IModalProps> = (props) => {
                 <div ref={layoutRef} onClick={onCloseHandler} className={cls.layout}></div>
                 <div ref={contentRef} className={classNames(cls.content, {}, [])}>
                     {children}
+                    <AppButton className={cls.modalButton} onClick={onCloseHandler}>Х</AppButton>
                 </div>
             </div>
         </Portal>

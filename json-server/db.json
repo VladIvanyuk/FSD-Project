@@ -3,10 +3,12 @@
   "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
   "users": [
     {
-      "id": 1,
-      "name": "admin",
+      "username": "admin",
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": { 
+    "name": "admin",
+    "password": "123"
+  }
 }

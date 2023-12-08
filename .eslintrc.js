@@ -45,6 +45,7 @@ module.exports = {
         "@typescript-eslint/consistent-type-imports": "off",
         "@typescript-eslint/prefer-nullish-coalescing": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
+        '@typescript-eslint/explicit-function-return-type': 'off',
         "semi": "off",
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/semi": "off",
@@ -54,7 +55,7 @@ module.exports = {
         "i18next/no-literal-string": ['warn', {onlyAttribute: ['']}],
         "react/display-name": "off",
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "error"
+        "react-hooks/exhaustive-deps": "error",
     },
     "globals": {
         IS_DEV: true
