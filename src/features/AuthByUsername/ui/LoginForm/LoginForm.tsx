@@ -30,9 +30,12 @@ export const LoginForm = memo((props) => {
 
     // добавляем/удаляем редьюсер логина при открытии/закрытии модалки
     useEffect(() => {
-        addReducer('loginForm', loginReducer)
+        addReducer({
+            loginForm: loginReducer
+        })
+
         return () => {
-            deleteReducer('loginForm')
+            deleteReducer(['loginForm'])
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
