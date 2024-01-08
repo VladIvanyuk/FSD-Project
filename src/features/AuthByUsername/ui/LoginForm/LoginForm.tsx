@@ -10,6 +10,10 @@ import { getLoginState } from '../../model/selectors/getLoginState/getLoginState
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 
+export interface ILoginFormProps {
+    className?: string
+}
+
 export const LoginForm = memo((props) => {
     const { t } = useTranslation();
 

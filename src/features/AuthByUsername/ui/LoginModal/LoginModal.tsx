@@ -1,10 +1,11 @@
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 import { classNames } from 'helpers/classNames/classNames'
 import cls from './LoginModal.module.scss'
 import { Modal } from 'shared/ui/Modal/Modal'
-import { LoginForm } from '../LoginForm/LoginForm'
 import { useTranslation } from 'react-i18next'
 import { Text } from 'shared/ui/Text/Text'
+import { LoginFormLazy } from '../LoginForm/LoginForm.lazy'
+import { LoaderPage } from 'widgets/LoaderPage/ui/LoaderPage'
 
 interface ILoginModalProps {
   className?: string
@@ -24,7 +25,9 @@ export const LoginModal: FC<ILoginModalProps> = (props) => {
                     </Modal>
                     : <Modal onClose={onClose} className={classNames(cls.LoginModal, {}, [className])}>
                         <Text title={t('Форма авторизации')} className={cls.loginFormTitle}></Text>
-                        <LoginForm />
+                        <Suspense fallback={<LoaderPage />}>
+                            <LoginFormLazy />
+                        </Suspense>
                     </Modal>
             }
         </>
