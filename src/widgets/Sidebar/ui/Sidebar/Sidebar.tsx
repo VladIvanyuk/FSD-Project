@@ -3,10 +3,10 @@ import { classNames } from 'helpers/classNames/classNames'
 import cls from './Sidebar.module.scss'
 import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ThemeSwitcher'
-import { AppButton, AppLink, AppLinkTheme, ButtonTheme } from 'shared/ui'
+import { AppButton, AppLinkTheme, ButtonTheme } from 'shared/ui'
 import { ButtonSize } from 'shared/ui/AppButton/AppButton'
-import { useTranslation } from 'react-i18next'
-import { MainIcon, AboutIcon } from 'shared/assets';
+import { SidebarItemsList } from 'widgets/Sidebar/model/items'
+import { SidebarItem } from '../SidebarItem/SidebarItem'
 
 interface ISidebarProps {
   className?: string
@@ -14,7 +14,6 @@ interface ISidebarProps {
 
 export const Sidebar: FC<ISidebarProps> = (props) => {
     const [collapsed, setCollapsed] = useState(false);
-    const { t } = useTranslation();
     const toggleCollapse = (): void => {
         setCollapsed((prev) => !prev)
     }
@@ -34,26 +33,15 @@ export const Sidebar: FC<ISidebarProps> = (props) => {
                 {collapsed ? '>' : '<'}
             </AppButton>
             <div className={cls.items}>
-                <AppLink theme={AppLinkTheme.PRIMARY} to={'/'} className={cls.sidebarLink}>
-                    {
-                        collapsed
-                            ? <MainIcon className={classNames(cls.icon, {}, [])}/>
-                            : <>
-                                <MainIcon className={classNames('', {}, [cls['mr-10']])} />
-                                {t('Главная')}
-                            </>
-                    }
-                </AppLink>
-                <AppLink theme={AppLinkTheme.PRIMARY} to={'/about'} className={cls.sidebarLink}>
-                    {
-                        collapsed
-                            ? <AboutIcon className={classNames(cls.icon, {}, [])}/>
-                            : <>
-                                <AboutIcon className={classNames('', {}, [cls['mr-10']])} />
-                                {t('О нас')}
-                            </>
-                    }
-                </AppLink>
+                {SidebarItemsList.map((item) => (
+                    <SidebarItem
+                        key={item.path}
+                        path={item.path}
+                        text={item.text}
+                        Icon={item.Icon}
+                        collapsed={collapsed}
+                        theme={AppLinkTheme.PRIMARY} />
+                ))}
             </div>
             <div className={cls.switchers}>
                 <ThemeSwitcher className={classNames('', { [cls.margin]: !collapsed }, [])} />

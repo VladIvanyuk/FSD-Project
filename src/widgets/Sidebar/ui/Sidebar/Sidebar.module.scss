@@ -33,19 +33,8 @@
     margin-right: 20px;
 }
 
-.mr-10 {
-    margin-right: 10px;
-}
-
 .items {
     display: flex;
     flex-direction: column;
     padding: 0 30px;
-}
-
-.sidebarLink {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    fill: var(--inverted-primary-color);
 }
