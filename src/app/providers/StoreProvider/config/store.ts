@@ -6,7 +6,7 @@ import { createReducerManager } from './reducerManaget'
 export const createReduxStore = (
     initialState?: IStateSchema,
     asyncReducers?: ReducersMapObject<IStateSchema>
-): any => {
+) => {
     const rootReducers: ReducersMapObject<IStateSchema> = {
         ...asyncReducers,
         user: userReducer
@@ -24,3 +24,5 @@ export const createReduxStore = (
 
     return store;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']

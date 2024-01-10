@@ -5,10 +5,11 @@ import { classNames } from 'helpers/classNames/classNames';
 import { AppButton, ButtonTheme } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entity/User';
 import { LOCALSTORAGE_USER_KEY } from 'shared/const/localstorage';
 import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface INavbarProps {
   classNames?: string
@@ -17,7 +18,7 @@ interface INavbarProps {
 export const Navbar: FC<INavbarProps> = () => {
     const [isOpenModal, setIsOpenModal] = useState(false);
     const { t } = useTranslation();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const isAuth = useSelector(getUserAuthData);
 
     const logout = () => {

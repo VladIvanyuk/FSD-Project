@@ -8,7 +8,13 @@
     }
   ],
   "profile": { 
-    "name": "admin",
-    "password": "123"
+    "firstName": "Vlad",
+    "lastName": "Ivanyuk",
+    "age": 29,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Vladivostok",
+    "username": "admin",
+    "avatar": "https://files.libertycity.net/download/gta1_misc/thumbs/2021-11/avatarki-gta-london_1686008826_730752.jpg"
   }
 }

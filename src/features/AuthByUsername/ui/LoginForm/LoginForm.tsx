@@ -4,7 +4,7 @@ import cls from './LoginForm.module.scss'
 import { useTranslation } from 'react-i18next'
 import { AppButton } from 'shared/ui'
 import { Input } from 'shared/ui/Input/Input'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
@@ -12,7 +12,8 @@ import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLogi
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading'
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError'
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword'
-import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad'
+import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/useDynamicReducerLoad'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 export interface ILoginFormProps {
     className?: string
@@ -20,7 +21,7 @@ export interface ILoginFormProps {
 
 export const LoginForm = memo((props) => {
     const { t } = useTranslation();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
 
     const username = useSelector(getLoginUsername);
@@ -49,7 +50,7 @@ export const LoginForm = memo((props) => {
     }, [dispatch])
 
     const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({ username, password }))
+        dispatch(loginByUsername({ username, password })).catch(console.log)
     }, [dispatch, password, username])
 
     return (
