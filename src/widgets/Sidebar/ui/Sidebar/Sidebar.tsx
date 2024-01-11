@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { memo, useState } from 'react'
 import { classNames } from 'helpers/classNames/classNames'
 import cls from './Sidebar.module.scss'
 import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher'
@@ -12,11 +12,12 @@ interface ISidebarProps {
   className?: string
 }
 
-export const Sidebar: FC<ISidebarProps> = (props) => {
+export const Sidebar = memo((props: ISidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const toggleCollapse = (): void => {
         setCollapsed((prev) => !prev)
     }
+    const [state, setState] = useState(0);
 
     const { className } = props;
     return (
@@ -42,6 +43,8 @@ export const Sidebar: FC<ISidebarProps> = (props) => {
                         collapsed={collapsed}
                         theme={AppLinkTheme.PRIMARY} />
                 ))}
+                <button onClick={() => { setState(state + 1); }}>CKLIC</button>
+
             </div>
             <div className={cls.switchers}>
                 <ThemeSwitcher className={classNames('', { [cls.margin]: !collapsed }, [])} />
@@ -49,4 +52,4 @@ export const Sidebar: FC<ISidebarProps> = (props) => {
             </div>
         </div>
     )
-}
+})
