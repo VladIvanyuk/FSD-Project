@@ -1,4 +1,5 @@
 import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { AxiosInstance } from 'axios';
 import { IProfileSchema } from 'entity/Profile';
 import { IUserSchema } from 'entity/User';
 import { ILoginSchema } from 'features/AuthByUsername';
@@ -22,4 +23,13 @@ export interface IReducerManager {
     reduce: (state: IStateSchema, action: AnyAction) => CombinedState<IStateSchema>
     add: (key: TStateSchemaKeys, reducer: Reducer) => void
     remove: (key: TStateSchemaKeys) => void
+}
+
+export interface IThunkExtraArgs {
+    api: AxiosInstance
+}
+
+export interface IThunkConfig<T> {
+    rejectValue: T
+    extra: IThunkExtraArgs
 }
