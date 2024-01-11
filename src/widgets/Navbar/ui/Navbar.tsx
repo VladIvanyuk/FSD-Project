@@ -1,5 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
-import { FC, useState } from 'react';
+import { memo, useState } from 'react';
 import cls from './navbar.module.scss';
 import { classNames } from 'helpers/classNames/classNames';
 import { AppButton, ButtonTheme } from 'shared/ui';
@@ -15,7 +15,7 @@ interface INavbarProps {
   classNames?: string
 }
 
-export const Navbar: FC<INavbarProps> = () => {
+export const Navbar = memo((props: INavbarProps) => {
     const [isOpenModal, setIsOpenModal] = useState(false);
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
@@ -42,4 +42,4 @@ export const Navbar: FC<INavbarProps> = () => {
             }
         </nav>
     );
-};
+});

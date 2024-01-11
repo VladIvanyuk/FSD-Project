@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const MainPage: FC = () => {
+export const MainPage: FC = memo(() => {
     const { t } = useTranslation('main');
 
     return (
@@ -9,4 +9,4 @@ export const MainPage: FC = () => {
             {t('Главная страница')}
         </div>
     );
-};
+});
