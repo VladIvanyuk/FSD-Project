@@ -7,10 +7,10 @@ interface IProfilePageProps {
 }
 
 export const ProfilePage = memo((props: IProfilePageProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('profile');
     return (
         <div>
-            {t('PROFILE PAGE')}
+            {t('Профиль')}
         </div>
     )
 })
