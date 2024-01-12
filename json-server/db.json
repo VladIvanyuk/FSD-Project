@@ -1,20 +1,33 @@
 {
-  "posts": [{ "id": "1", "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": "1", "body": "some comment", "postId": "1" }],
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": "1"
+    }
+  ],
   "users": [
     {
       "username": "admin",
       "password": "123"
     }
   ],
-  "profile": { 
-    "firstName": "Vlad",
-    "lastName": "Ivanyuk",
-    "age": 29,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Vladivostok",
-    "username": "admin",
-    "avatar": "https://files.libertycity.net/download/gta1_misc/thumbs/2021-11/avatarki-gta-london_1686008826_730752.jpg"
-  }
+  "profile": 
+    {
+      "firstname": "Влад",
+      "lastname": "Иванюк",
+      "age": 29,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Vladivostok",
+      "username": "admin",
+      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+    }
 }
