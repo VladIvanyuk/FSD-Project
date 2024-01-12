@@ -18,10 +18,12 @@ const config: StorybookConfig = {
     docs: {
         autodocs: 'tag'
     },
-    webpackFinal: async (config) => {
-        config.resolve.plugins = [new TsconfigPathsPlugin()];
+    webpackFinal: async (config: any) => {
+        if (config.resolve) {
+            config.resolve.plugins = [new TsconfigPathsPlugin()];
+        }
         const rules = config.module.rules;
-        const fileLoaderRule: any = rules.find((rule: any) => rule.test.test('.svg'));
+        const fileLoaderRule = rules.find((rule: any) => rule.test.test('.svg'));
         fileLoaderRule.exclude = /\.svg$/;
         rules.push(buildSvgLoader(), buildCssLoader(true));
         return config;

@@ -1,6 +1,6 @@
-import { DeepPartial } from '@reduxjs/toolkit'
 import { IStateSchema } from 'app/providers/StoreProvider'
 import { getLoginUsername } from './getLoginUsername'
+import { DeepPartial } from 'app/types/types'
 
 describe('getLoginIsLoading.test', () => {
     test('Should return error', () => {

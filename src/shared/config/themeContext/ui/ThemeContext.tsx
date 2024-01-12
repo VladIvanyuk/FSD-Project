@@ -6,10 +6,12 @@ export enum Theme {
   DARK = 'dark'
 }
 export interface IThemeContextProps {
-  theme?: Theme
+  theme: Theme
   setTheme?: (theme: Theme) => void
 }
-export const ThemeContext = createContext<IThemeContextProps>({});
+export const ThemeContext = createContext<IThemeContextProps>({
+    theme: Theme.DARK
+});
 
 const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT;
 

@@ -4,7 +4,7 @@ import { useStore } from 'react-redux';
 import { Reducer } from 'redux';
 import { useAppDispatch } from '../useAppDispatch/useAppDispatch';
 
-type TReducersList = {
+export type TReducersList = {
     [name in TStateSchemaKeys]?: Reducer;
 }
 
