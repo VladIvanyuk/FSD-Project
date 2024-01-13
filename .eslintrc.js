@@ -47,6 +47,7 @@ module.exports = {
         "@typescript-eslint/strict-boolean-expressions": "off",
         '@typescript-eslint/explicit-function-return-type': 'off',
         "@typescript-eslint/no-dynamic-delete": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
         // "@typescript-eslint/no-floating-promises": "off",
         "semi": "off",
         "@typescript-eslint/indent": "off",

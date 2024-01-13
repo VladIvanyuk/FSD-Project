@@ -9,7 +9,7 @@ export interface IStateSchema {
 
     // Асинхронные релюсеры
     loginForm?: ILoginSchema
-    profile: IProfileSchema
+    profile?: IProfileSchema
 }
 
 export type TStateSchemaKeys = keyof IStateSchema;

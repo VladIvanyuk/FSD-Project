@@ -1,4 +1,4 @@
-import { ReducersMapObject, configureStore } from '@reduxjs/toolkit'
+import { CombinedState, Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { IStateSchema } from './StateSchema'
 import { userReducer } from 'entity/User'
 import { createReducerManager } from './reducerManaget'
@@ -15,7 +15,7 @@ export const createReduxStore = (
 
     const reducerManager = createReducerManager(rootReducers);
     const store = configureStore({
-        reducer: reducerManager.reduce,
+        reducer: reducerManager.reduce as Reducer<CombinedState<IStateSchema>>,
         devTools: true,
         preloadedState: initialState,
         middleware: getDefaultMiddleware =>
@@ -27,7 +27,6 @@ export const createReduxStore = (
                 }
             })
     })
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     store.reducerManager = reducerManager;
 
