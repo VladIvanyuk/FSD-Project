@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 import { IStateSchema, StoreProvider } from 'app/providers/StoreProvider'
+import { DeepPartial } from 'app/types/types'
 import { ReactNode } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import { MemoryRouter } from 'react-router'
-import { DeepPartial } from 'redux'
 import { i18nForTest } from 'shared/config'
 
 export interface IComponentRenderOptions {
@@ -19,7 +19,7 @@ export const ComponentRender = (component: ReactNode, options: IComponentRenderO
 
     return render(
         <StoreProvider initialState={initialState} >
-            <MemoryRouter initialEntries={[route]}>
+            <MemoryRouter initialEntries={[route || '/']}>
                 <I18nextProvider i18n={i18nForTest}>
                     {component}
                 </I18nextProvider>

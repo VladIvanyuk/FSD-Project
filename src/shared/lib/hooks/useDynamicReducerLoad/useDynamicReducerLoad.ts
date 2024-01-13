@@ -4,11 +4,9 @@ import { useStore } from 'react-redux';
 import { Reducer } from 'redux';
 import { useAppDispatch } from '../useAppDispatch/useAppDispatch';
 
-type TReducersList = {
+export type TReducersList = {
     [name in TStateSchemaKeys]?: Reducer;
 }
-
-type ReducersListEntry = [TStateSchemaKeys, Reducer]
 
 export const useDynamicReducerLoad = () => {
     // хук для динамического добавления/удаления редьюсеров в стор
@@ -16,8 +14,8 @@ export const useDynamicReducerLoad = () => {
     const store = useStore() as IReduxStoreWithManager;
     const dispatch = useAppDispatch();
     const addReducer = (reducers: TReducersList) => {
-        Object.entries(reducers).forEach(([key, reducer]: ReducersListEntry) => {
-            store.reducerManager.add(key, reducer);
+        Object.entries(reducers).forEach(([key, reducer]) => {
+            store.reducerManager.add(key as TStateSchemaKeys, reducer);
             dispatch({ type: `@ADD Reducer: ${key}` })
         })
     }

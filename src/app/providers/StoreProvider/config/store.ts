@@ -1,7 +1,8 @@
-import { ReducersMapObject, configureStore } from '@reduxjs/toolkit'
+import { CombinedState, Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { IStateSchema } from './StateSchema'
 import { userReducer } from 'entity/User'
 import { createReducerManager } from './reducerManaget'
+import { $api } from 'shared/api/api'
 
 export const createReduxStore = (
     initialState?: IStateSchema,
@@ -13,12 +14,19 @@ export const createReduxStore = (
     }
 
     const reducerManager = createReducerManager(rootReducers);
-    const store = configureStore<IStateSchema>({
-        reducer: reducerManager.reduce,
+    const store = configureStore({
+        reducer: reducerManager.reduce as Reducer<CombinedState<IStateSchema>>,
         devTools: true,
-        preloadedState: initialState
+        preloadedState: initialState,
+        middleware: getDefaultMiddleware =>
+            getDefaultMiddleware({
+                thunk: {
+                    extraArgument: {
+                        api: $api
+                    }
+                }
+            })
     })
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     store.reducerManager = reducerManager;
 

@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, memo } from 'react'
-import { classNames } from 'helpers/classNames/classNames'
+import { Mods, classNames } from 'helpers/classNames/classNames'
 import cls from './AppButton.module.scss'
 
 interface IAppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,8 +25,8 @@ export enum ButtonSize {
 }
 
 export const AppButton = memo((props: IAppButtonProps) => {
-    const { className, children, theme, square, size, disabled, ...otherProps } = props;
-    const mods: Record<string, boolean> = {
+    const { className, children, theme = ButtonTheme.OUTLINE, square, size = ButtonSize.M, disabled, ...otherProps } = props;
+    const mods: Mods = {
         [cls.square]: square,
         [cls.disabled]: disabled
     }

@@ -20,13 +20,9 @@ type Story = StoryObj<typeof ProfilePage>;
 export const Dark: Story = {
     args: {}
 };
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    profile: { data: null, error: null, readonly: true, isLoading: false }
-})]
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})]
 
 export const Light: Story = {
     args: {}
 };
-Light.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({
-    profile: { data: null, error: null, readonly: true, isLoading: false }
-})]
+Light.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({})]

@@ -9,24 +9,24 @@ import { AppButton } from '../AppButton/AppButton'
 interface IModalProps {
   className?: string
   children?: ReactNode
-  onClose?: () => void
+  onClose: () => void
 }
 
 export const Modal: FC<IModalProps> = (props) => {
     const { className, children, onClose } = props;
     const { theme } = useTheme();
-    const contentRef = useRef(null);
-    const layoutRef = useRef(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const layoutRef = useRef<HTMLDivElement>(null);
     const ANIMATION_DELAY = 300;
 
     useEffect(() => {
-        contentRef.current.classList.add(cls['content-full']);
-        layoutRef.current.classList.add(cls['layout-full']);
+        contentRef.current?.classList.add(cls['content-full']);
+        layoutRef.current?.classList.add(cls['layout-full']);
     }, [])
 
     const onCloseHandler = () => {
-        contentRef.current.classList.remove(cls['content-full']);
-        layoutRef.current.classList.remove(cls['layout-full']);
+        contentRef.current?.classList.remove(cls['content-full']);
+        layoutRef.current?.classList.remove(cls['layout-full']);
         setTimeout(() => {
             onClose();
         }, ANIMATION_DELAY)
