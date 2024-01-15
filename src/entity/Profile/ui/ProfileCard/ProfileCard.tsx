@@ -1,19 +1,37 @@
 import { FC } from 'react'
 import cls from './ProfileCard.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Text } from 'shared/ui/Text/Text'
-import { AppButton, ButtonTheme } from 'shared/ui'
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text'
+import { AppButton, ButtonTheme, Loader } from 'shared/ui'
 import { Input } from 'shared/ui/Input/Input'
-import { useSelector } from 'react-redux'
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData'
+import { IProfile } from 'entity/Profile/model/types/profile'
+import { classNames } from 'helpers/classNames/classNames'
 
 interface IProfileCardProps {
   className?: string
+  data?: IProfile
+  isLoading?: boolean
+  error?: string
 }
 
-export const ProfileCard: FC<IProfileCardProps> = (props) => {
+export const ProfileCard: FC<IProfileCardProps> = ({ data, error, isLoading }) => {
     const { t } = useTranslation();
-    const data = useSelector(getProfileData)
+
+    if (isLoading) {
+        return (
+            <div className={classNames(cls.ProfileCard, {}, [cls.isLoading])}>
+                <Loader className={cls.center} />
+            </div>
+        )
+    }
+
+    if (error) {
+        return (
+            <div className={cls.ProfileCard}>
+                <Text theme={TextTheme.ERROR} align={TextAlign.CENTER} title='Произошла ошибка при загрузке профиля' text='Попробуйте перезагрузить страницу' />
+            </div>
+        )
+    }
     return (
         <div className={cls.ProfileCard}>
             <div className={cls.header}>

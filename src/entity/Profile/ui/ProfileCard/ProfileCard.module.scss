@@ -7,7 +7,7 @@
 
 .ProfileCard {
     width: 100%;
-    max-width: 450px;
+    max-width: 550px;
     padding: 20px;
     border: 2px solid var(--inverted-bg-color);
 }
@@ -15,4 +15,22 @@
 .input {
     display: block;
     margin-bottom: 20px;
+}
+
+.isLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    .title {
+        font: var(--font-l);
+        color: var(--red-light);
+    }
+
+    .text {
+        font: var(--font-m);
+        color: var(--red-dark);
+    }
 }
