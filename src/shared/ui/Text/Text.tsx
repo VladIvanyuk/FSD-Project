@@ -22,9 +22,9 @@ interface ITextProps {
 }
 
 export const Text: FC<ITextProps> = (props) => {
-    const { title = '', text = '', theme = TextTheme.PRIMARY, align = TextAlign.LEFT } = props;
+    const { className, title = '', text = '', theme = TextTheme.PRIMARY, align = TextAlign.LEFT } = props;
     return (
-        <div className={classNames(cls.Text, { }, [cls[theme]])}>
+        <div className={classNames(cls.Text, { }, [cls[theme], className])}>
             {title && <p className={classNames(cls.title, {}, [cls[align]])}>{title}</p>}
             {text && <p className={classNames(cls.text, {}, [cls[align]])}>{text}</p>}
         </div>

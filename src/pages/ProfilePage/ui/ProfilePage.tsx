@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 // import cls from './ProfilePage.module.scss'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/useDynamicReducerLoad';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface IProfilePageProps {
   className?: string
@@ -31,6 +32,7 @@ export const ProfilePage = memo((props: IProfilePageProps) => {
 
     return (
         <div>
+            <ProfilePageHeader />
             <ProfileCard data={data} isLoading={isLoading} error={error} />
         </div>
     )
