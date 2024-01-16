@@ -15,6 +15,7 @@ export const ProfilePage = memo((props: IProfilePageProps) => {
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
     const dispatch = useAppDispatch();
     const form = useSelector(getProfileForm)
+    console.log(form)
     const isLoading = useSelector(getProfileIsLoading)
     const error = useSelector(getProfileError)
 
@@ -32,7 +33,7 @@ export const ProfilePage = memo((props: IProfilePageProps) => {
             }))
             break;
         }
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         addReducer({

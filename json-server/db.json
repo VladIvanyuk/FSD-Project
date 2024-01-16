@@ -19,15 +19,14 @@
       "password": "123"
     }
   ],
-  "profile": 
-    {
-      "firstname": "Влад",
-      "secondname": "Иванюк",
-      "age": 29,
-      "currency": "RUB",
-      "country": "Russia",
-      "city": "Vladivostok",
-      "username": "admin",
-      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
-    }
+  "profile": {
+    "firstname": "Влад",
+    "secondname": "Иванюк",
+    "age": 29,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Vladivostok",
+    "username": "admin",
+    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+  }
 }

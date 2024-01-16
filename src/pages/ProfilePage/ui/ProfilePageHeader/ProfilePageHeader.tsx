@@ -7,6 +7,7 @@ import { AppButton, ButtonTheme } from 'shared/ui'
 import { useSelector } from 'react-redux'
 import { getProfileReadonly, profileActions } from 'entity/Profile'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { updateProfileData } from 'entity/Profile/model/services/updateProfileData/updateProfileData'
 
 interface IProfilePageHeaderProps {
   className?: string
@@ -26,6 +27,10 @@ export const ProfilePageHeader: FC<IProfilePageHeaderProps> = (props) => {
         case 'cancel':
             dispatch(profileActions.cancelUpdateProfile());
             break;
+
+        case 'save':
+            dispatch(updateProfileData()).catch(console.log);
+            break;
         }
     }
     return (
@@ -37,7 +42,7 @@ export const ProfilePageHeader: FC<IProfilePageHeaderProps> = (props) => {
                         {t('Редактировать')}
                     </AppButton>
                     : <div>
-                        <AppButton className={cls.saveButton} theme={ButtonTheme.OUTLINE}>
+                        <AppButton onClick={() => { onEditHandler('save'); }} className={cls.saveButton} theme={ButtonTheme.OUTLINE}>
                             {t('Сохранить')}
                         </AppButton>
                         <AppButton onClick={() => { onEditHandler('cancel'); }} theme={ButtonTheme.OUTLINE}>
