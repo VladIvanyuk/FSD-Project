@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ProfileCard, fetchProfileData, getProfileData, getProfileError, getProfileIsLoading, profileReducer } from 'entity/Profile';
-import { memo, useEffect } from 'react'
+import { ProfileCard, fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, profileActions, profileReducer } from 'entity/Profile';
+import { memo, useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 // import cls from './ProfilePage.module.scss'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -14,9 +14,25 @@ interface IProfilePageProps {
 export const ProfilePage = memo((props: IProfilePageProps) => {
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
     const dispatch = useAppDispatch();
-    const data = useSelector(getProfileData)
+    const form = useSelector(getProfileForm)
     const isLoading = useSelector(getProfileIsLoading)
     const error = useSelector(getProfileError)
+
+    const onChangeInfo = useCallback((name: string, value: string) => {
+        switch (name) {
+        case 'firstname':
+            dispatch(profileActions.updateProfile({
+                firstname: value
+            }))
+            break;
+
+        case 'secondname':
+            dispatch(profileActions.updateProfile({
+                secondname: value
+            }))
+            break;
+        }
+    }, [])
 
     useEffect(() => {
         addReducer({
@@ -33,7 +49,7 @@ export const ProfilePage = memo((props: IProfilePageProps) => {
     return (
         <div>
             <ProfilePageHeader />
-            <ProfileCard data={data} isLoading={isLoading} error={error} />
+            <ProfileCard onEditHandler={onChangeInfo} data={form} isLoading={isLoading} error={error} />
         </div>
     )
 })

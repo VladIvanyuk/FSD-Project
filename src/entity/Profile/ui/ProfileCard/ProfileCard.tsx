@@ -14,9 +14,10 @@ interface IProfileCardProps {
   data?: IProfile
   isLoading?: boolean
   error?: string
+  onEditHandler: (value: string, name: string) => void
 }
 
-export const ProfileCard: FC<IProfileCardProps> = ({ data, error, isLoading }) => {
+export const ProfileCard: FC<IProfileCardProps> = ({ data, error, isLoading, onEditHandler }) => {
     const { t } = useTranslation();
     const readonly = useSelector(getProfileReadonly)
 
@@ -38,8 +39,20 @@ export const ProfileCard: FC<IProfileCardProps> = ({ data, error, isLoading }) =
     return (
         <div className={cls.ProfileCard}>
             <div className={cls.data}>
-                <Input readonly={readonly} className={cls.input} value={data?.firstname} placeholder={t('Ваше имя')} />
-                <Input readonly={readonly} className={cls.input} value={data?.lastname} placeholder={t('Ваша фамилия')} />
+                <Input
+                    onChange={onEditHandler}
+                    readonly={readonly}
+                    inputName='firstname'
+                    className={cls.input}
+                    value={data?.firstname}
+                    placeholder={t('Ваше имя')} />
+                <Input
+                    onChange={onEditHandler}
+                    readonly={readonly}
+                    inputName='secondname'
+                    className={cls.input}
+                    value={data?.secondname}
+                    placeholder={t('Ваша фамилия')} />
             </div>
         </div>
     )
