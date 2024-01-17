@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Theme } from 'shared/config/themeContext';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { ProfilePage } from './ProfilePage';
+import { ProfilePage } from '../../../features/EditableProfileCard/model/selectors/ProfilePage';
 import { StoreDecorator } from 'shared/config/storybook/StoreDectorator/StoreDecorator';
 
 const meta: Meta<typeof ProfilePage> = {

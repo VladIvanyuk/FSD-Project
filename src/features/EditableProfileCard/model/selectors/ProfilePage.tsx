@@ -3,9 +3,10 @@ import { memo, useEffect } from 'react'
 // import cls from './ProfilePage.module.scss'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/useDynamicReducerLoad';
-import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+import { ProfilePageHeader } from '../../../../pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader';
+import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { EditableProfileCard } from 'features/EditableProfileCard/ui/EditableProfileCard';
-import { editableProfileCardReducer, fetchProfileData } from 'features/EditableProfileCard';
+import { editableProfileCardReducer } from '../slice/editableProfileCardSlice';
 
 interface IProfilePageProps {
   className?: string

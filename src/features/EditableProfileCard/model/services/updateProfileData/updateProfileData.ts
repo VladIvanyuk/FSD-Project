@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { IThunkConfig } from 'app/providers/StoreProvider';
-import { IProfile } from '../../types/profile';
+import { IProfile } from 'entity/Profile';
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type

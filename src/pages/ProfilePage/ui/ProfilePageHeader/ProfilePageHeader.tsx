@@ -5,9 +5,8 @@ import { useTranslation } from 'react-i18next'
 import { Text } from 'shared/ui/Text/Text'
 import { AppButton, ButtonTheme } from 'shared/ui'
 import { useSelector } from 'react-redux'
-import { getProfileReadonly, profileActions } from 'entity/Profile'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { updateProfileData } from 'entity/Profile/model/services/updateProfileData/updateProfileData'
+import { getProfileReadonly, editableProfileCardActions, updateProfileData } from 'features/EditableProfileCard'
 
 interface IProfilePageHeaderProps {
   className?: string
@@ -21,11 +20,11 @@ export const ProfilePageHeader: FC<IProfilePageHeaderProps> = (props) => {
     const onEditHandler = (name: string) => {
         switch (name) {
         case 'edit':
-            dispatch(profileActions.setReadonly(false));
+            dispatch(editableProfileCardActions.setReadonly(false));
             break;
 
         case 'cancel':
-            dispatch(profileActions.cancelUpdateProfile());
+            dispatch(editableProfileCardActions.cancelUpdateProfile());
             break;
 
         case 'save':

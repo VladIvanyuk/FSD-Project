@@ -41,11 +41,11 @@ export const LoginForm = memo((props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const onChangeUsername = useCallback((value: string) => {
+    const onChangeUsername = useCallback((_, value: string) => {
         dispatch(loginActions.setUsername(value))
     }, [dispatch])
 
-    const onChangePassword = useCallback((value: string) => {
+    const onChangePassword = useCallback((_, value: string) => {
         dispatch(loginActions.setPassword(value))
     }, [dispatch])
 
@@ -56,8 +56,8 @@ export const LoginForm = memo((props) => {
     return (
         <div className={classNames(cls.LoginForm, {}, [])}>
             {error && <Text text={t(error)} theme={TextTheme.ERROR} />}
-            <Input placeholder={t('Логин')} onChange={onChangeUsername} value={username}/>
-            <Input placeholder={t('Пароль')} onChange={onChangePassword} value={password}/>
+            <Input placeholder={t('Логин')} onChange={onChangeUsername} value={username} inputName={''}/>
+            <Input placeholder={t('Пароль')} onChange={onChangePassword} value={password} inputName={''}/>
             <AppButton disabled={isLoading} onClick={onLoginClick} theme={''}>
                 {t('Войти')}
             </AppButton>

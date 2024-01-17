@@ -6,20 +6,18 @@ import { Loader } from 'shared/ui'
 import { Input } from 'shared/ui/Input/Input'
 import { IProfile } from 'entity/Profile/model/types/profile'
 import { classNames } from 'helpers/classNames/classNames'
-import { useSelector } from 'react-redux'
-import { getProfileReadonly } from 'entity/Profile/model/selectors/getProfileReadonly/getProfileReadonly'
 
 interface IProfileCardProps {
   className?: string
-  data?: IProfile
+  form?: IProfile
   isLoading?: boolean
+  readonly?: boolean
   error?: string
   onEditHandler: (value: string, name: string) => void
 }
 
-export const ProfileCard: FC<IProfileCardProps> = ({ data, error, isLoading, onEditHandler }) => {
+export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLoading, onEditHandler }) => {
     const { t } = useTranslation();
-    const readonly = useSelector(getProfileReadonly)
 
     if (isLoading) {
         return (
@@ -44,14 +42,14 @@ export const ProfileCard: FC<IProfileCardProps> = ({ data, error, isLoading, onE
                     readonly={readonly}
                     inputName='firstname'
                     className={cls.input}
-                    value={data?.firstname}
+                    value={form?.firstname}
                     placeholder={t('Ваше имя')} />
                 <Input
                     onChange={onEditHandler}
                     readonly={readonly}
                     inputName='secondname'
                     className={cls.input}
-                    value={data?.secondname}
+                    value={form?.secondname}
                     placeholder={t('Ваша фамилия')} />
             </div>
         </div>
