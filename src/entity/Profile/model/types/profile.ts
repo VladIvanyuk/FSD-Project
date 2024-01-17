@@ -3,7 +3,7 @@ import { Countries, Currencies } from 'shared/const/common'
 export interface IProfile {
     firstname?: string
     secondname?: string
-    age?: number
+    age?: string
     currency?: Currencies
     country?: Countries
     city?: string

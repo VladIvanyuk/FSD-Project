@@ -51,6 +51,21 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     className={cls.input}
                     value={form?.secondname}
                     placeholder={t('Ваша фамилия')} />
+                <Input
+                    onChange={onEditHandler}
+                    readonly={readonly}
+                    type={'number'}
+                    inputName='age'
+                    className={cls.input}
+                    value={form?.age}
+                    placeholder={t('Ваш возраст')} />
+                <Input
+                    onChange={onEditHandler}
+                    readonly={readonly}
+                    inputName='city'
+                    className={cls.input}
+                    value={form?.city}
+                    placeholder={t('Ваш город')} />
             </div>
         </div>
     )

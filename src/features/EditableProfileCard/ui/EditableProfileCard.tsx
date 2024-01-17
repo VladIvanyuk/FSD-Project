@@ -37,6 +37,17 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = () => {
                 secondname: value
             }))
             break;
+
+        case 'age':
+            dispatch(editableProfileCardActions.updateProfile({
+                age: value
+            }))
+            break;
+        case 'city':
+            dispatch(editableProfileCardActions.updateProfile({
+                city: value
+            }))
+            break;
         }
     }, [dispatch])
     return (

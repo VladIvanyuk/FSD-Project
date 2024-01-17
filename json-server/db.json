@@ -22,7 +22,7 @@
   "profile": {
     "firstname": "Влад",
     "secondname": "Иванюк",
-    "age": 29,
+    "age": "25",
     "currency": "RUB",
     "country": "Russia",
     "city": "Vladivostok",
