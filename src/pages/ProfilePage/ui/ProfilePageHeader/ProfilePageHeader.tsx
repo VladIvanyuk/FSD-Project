@@ -41,10 +41,10 @@ export const ProfilePageHeader: FC<IProfilePageHeaderProps> = (props) => {
                         {t('Редактировать')}
                     </AppButton>
                     : <div>
-                        <AppButton onClick={() => { onEditHandler('save'); }} className={cls.saveButton} theme={ButtonTheme.OUTLINE}>
+                        <AppButton onClick={() => { onEditHandler('save'); }} className={cls.saveButton} theme={ButtonTheme.GREEN}>
                             {t('Сохранить')}
                         </AppButton>
-                        <AppButton onClick={() => { onEditHandler('cancel'); }} theme={ButtonTheme.OUTLINE}>
+                        <AppButton onClick={() => { onEditHandler('cancel'); }} theme={ButtonTheme.RED}>
                             {t('Отмена')}
                         </AppButton>
                     </div>}
