@@ -6,6 +6,7 @@ import { Loader } from 'shared/ui'
 import { Input } from 'shared/ui/Input/Input'
 import { IProfile } from 'entity/Profile/model/types/profile'
 import { classNames } from 'helpers/classNames/classNames'
+import { Avatar } from 'shared/ui/Avatart/Avatar'
 
 interface IProfileCardProps {
   className?: string
@@ -36,21 +37,37 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
     }
     return (
         <div className={cls.ProfileCard}>
-            <div className={cls.data}>
+            <div className={cls.avatarWrapper}>
+                <Avatar size={70} src={form?.avatar} />
+            </div>
+            <div className={cls.profileWrapper}>
                 <Input
                     onChange={onEditHandler}
                     readonly={readonly}
                     inputName='firstname'
                     className={cls.input}
                     value={form?.firstname}
-                    placeholder={t('Ваше имя')} />
+                    placeholder={t('Имя')}
+                    isShowPlaceholder={true}
+                />
                 <Input
                     onChange={onEditHandler}
                     readonly={readonly}
                     inputName='secondname'
                     className={cls.input}
                     value={form?.secondname}
-                    placeholder={t('Ваша фамилия')} />
+                    placeholder={t('Фамилия')}
+                    isShowPlaceholder={true}
+                />
+                <Input
+                    onChange={onEditHandler}
+                    readonly={readonly}
+                    inputName='username'
+                    className={cls.input}
+                    value={form?.username}
+                    placeholder={t('Имя пользователя')}
+                    isShowPlaceholder={true}
+                />
                 <Input
                     onChange={onEditHandler}
                     readonly={readonly}
@@ -58,14 +75,27 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     inputName='age'
                     className={cls.input}
                     value={form?.age}
-                    placeholder={t('Ваш возраст')} />
+                    placeholder={t('Возраст')}
+                    isShowPlaceholder={true}
+                />
                 <Input
                     onChange={onEditHandler}
                     readonly={readonly}
                     inputName='city'
                     className={cls.input}
                     value={form?.city}
-                    placeholder={t('Ваш город')} />
+                    placeholder={t('Город')}
+                    isShowPlaceholder={true}
+                />
+                <Input
+                    onChange={onEditHandler}
+                    readonly={readonly}
+                    inputName='avatar'
+                    className={cls.input}
+                    value={form?.avatar}
+                    placeholder={t('Аватар')}
+                    isShowPlaceholder={true}
+                />
             </div>
         </div>
     )

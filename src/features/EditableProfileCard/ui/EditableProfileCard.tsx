@@ -48,6 +48,16 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = () => {
                 city: value
             }))
             break;
+        case 'avatar':
+            dispatch(editableProfileCardActions.updateProfile({
+                avatar: value
+            }))
+            break;
+        case 'username':
+            dispatch(editableProfileCardActions.updateProfile({
+                username: value
+            }))
+            break;
         }
     }, [dispatch])
     return (

@@ -5,9 +5,19 @@
     border: 2px solid var(--inverted-bg-color);
 }
 
+.avatarWrapper {
+    text-align: center;
+}
+
+.profileWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 0;
+    justify-content: space-evenly;
+}
+
 .input {
     display: block;
-    margin-bottom: 20px;
 }
 
 .isLoading {
