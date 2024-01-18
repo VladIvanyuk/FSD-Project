@@ -7,6 +7,7 @@ import { Input } from 'shared/ui/Input/Input'
 import { IProfile } from 'entity/Profile/model/types/profile'
 import { classNames } from 'helpers/classNames/classNames'
 import { Avatar } from 'shared/ui/Avatart/Avatar'
+import { Select } from 'shared/ui/Select/Select'
 
 interface IProfileCardProps {
   className?: string
@@ -96,6 +97,8 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     placeholder={t('Аватар')}
                     label={t('Аватар')}
                 />
+                <Select label='Страна' />
+                <Select label='Валюта' />
             </div>
         </div>
     )
