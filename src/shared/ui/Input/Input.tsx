@@ -11,18 +11,19 @@ interface IInputProps extends HTMLInputProps {
   onChange?: (value: string, name: string) => void
   readonly?: boolean
   inputName: string
-  isShowPlaceholder?: boolean
+  label?: string
 }
 
 export const Input = memo((props: IInputProps) => {
-    const { className, placeholder, isShowPlaceholder = false, value, onChange, type = 'text', readonly, inputName } = props;
+    const { className, placeholder, label, value, onChange, type = 'text', readonly, inputName } = props;
     const onChangHandler = (event: ChangeEvent<HTMLInputElement>): void => {
         onChange?.(event.target.name, event.target.value)
     }
     return (
         <div className={cls.inputWrapper}>
-            <span>{isShowPlaceholder && placeholder}</span>
+            <label htmlFor={inputName}>{label && label}</label>
             <input
+                id={inputName}
                 disabled={readonly}
                 name={inputName}
                 value={value}

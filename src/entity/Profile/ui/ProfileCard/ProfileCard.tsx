@@ -48,7 +48,7 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     className={cls.input}
                     value={form?.firstname}
                     placeholder={t('Имя')}
-                    isShowPlaceholder={true}
+                    label={t('Имя')}
                 />
                 <Input
                     onChange={onEditHandler}
@@ -57,7 +57,7 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     className={cls.input}
                     value={form?.secondname}
                     placeholder={t('Фамилия')}
-                    isShowPlaceholder={true}
+                    label={t('Фамилия')}
                 />
                 <Input
                     onChange={onEditHandler}
@@ -66,7 +66,7 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     className={cls.input}
                     value={form?.username}
                     placeholder={t('Имя пользователя')}
-                    isShowPlaceholder={true}
+                    label={t('Имя пользователя')}
                 />
                 <Input
                     onChange={onEditHandler}
@@ -76,7 +76,7 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     className={cls.input}
                     value={form?.age}
                     placeholder={t('Возраст')}
-                    isShowPlaceholder={true}
+                    label={t('Возраст')}
                 />
                 <Input
                     onChange={onEditHandler}
@@ -85,7 +85,7 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     className={cls.input}
                     value={form?.city}
                     placeholder={t('Город')}
-                    isShowPlaceholder={true}
+                    label={t('Город')}
                 />
                 <Input
                     onChange={onEditHandler}
@@ -94,7 +94,7 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     className={cls.input}
                     value={form?.avatar}
                     placeholder={t('Аватар')}
-                    isShowPlaceholder={true}
+                    label={t('Аватар')}
                 />
             </div>
         </div>
