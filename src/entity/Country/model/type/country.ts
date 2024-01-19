@@ -5,9 +5,3 @@ export enum Countries {
     Ukraine = 'Ukraine',
     Armenia = 'Armenia'
 }
-
-export enum Currencies {
-    RUB = 'RUB',
-    EUR = 'EUR',
-    USD = 'USD'
-}

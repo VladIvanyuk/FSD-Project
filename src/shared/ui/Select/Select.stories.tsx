@@ -16,5 +16,14 @@ type Story = StoryObj<typeof Select>;
 
 export const Primary: Story = {
     args: {
+        label: 'Валюта',
+        options: [
+            {
+                value: '123', content: 'Первый'
+            },
+            {
+                value: '1234', content: 'Второй'
+            }
+        ]
     }
 };

@@ -9,6 +9,8 @@ import { getProfileIsLoading } from '../model/selectors/getProfileIsLoading/getP
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError'
 import { editableProfileCardActions } from '../model/slice/editableProfileCardSlice'
 import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly'
+import { Currencies } from 'entity/Currency'
+import { Countries } from 'entity/Country'
 
 interface IEditableProfileCardProps {
     className?: string
@@ -22,7 +24,7 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = () => {
     const form = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading)
     const error = useSelector(getProfileError)
-    const readonly = useSelector(getProfileReadonly)
+    const readonly = useSelector(getProfileReadonly) || false;
 
     const onChangeInfo = useCallback((name: string, value: string) => {
         switch (name) {
@@ -56,6 +58,16 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = () => {
         case 'username':
             dispatch(editableProfileCardActions.updateProfile({
                 username: value
+            }))
+            break;
+        case 'currency':
+            dispatch(editableProfileCardActions.updateProfile({
+                currency: value as Currencies
+            }))
+            break;
+        case 'country':
+            dispatch(editableProfileCardActions.updateProfile({
+                country: value as Countries
             }))
             break;
         }

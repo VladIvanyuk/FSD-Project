@@ -7,13 +7,14 @@ import { Input } from 'shared/ui/Input/Input'
 import { IProfile } from 'entity/Profile/model/types/profile'
 import { classNames } from 'helpers/classNames/classNames'
 import { Avatar } from 'shared/ui/Avatart/Avatar'
-import { Select } from 'shared/ui/Select/Select'
+import { CurrencySelect } from 'entity/Currency'
+import { CountrySelect } from 'entity/Country'
 
 interface IProfileCardProps {
   className?: string
   form?: IProfile
   isLoading?: boolean
-  readonly?: boolean
+  readonly: boolean
   error?: string
   onEditHandler: (value: string, name: string) => void
 }
@@ -97,8 +98,8 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
                     placeholder={t('Аватар')}
                     label={t('Аватар')}
                 />
-                <Select label='Страна' />
-                <Select label='Валюта' />
+                <CountrySelect readonly={readonly} value={form?.country} onChange={onEditHandler} />
+                <CurrencySelect readonly={readonly} value={form?.currency} onChange={onEditHandler} />
             </div>
         </div>
     )
