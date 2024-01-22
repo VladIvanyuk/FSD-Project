@@ -6,6 +6,7 @@ import { StoreDecorator } from 'shared/config/storybook/StoreDectorator/StoreDec
 import { Countries } from 'entity/Country';
 import { Currencies } from 'entity/Currency';
 import { ProfilePage } from './ProfilePage';
+import AvatarImg from '../../../shared/assets/tests/storybook.jpg'
 
 const meta: Meta<typeof ProfilePage> = {
     title: 'pages/ProfilePage',
@@ -32,10 +33,11 @@ Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
             country: Countries.Russia,
             currency: Currencies.RUB,
             username: 'admin',
-            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv4OhN9ea9I-WbG-XlXGN21eEzLlr5HbCIzg&usqp=CAU'
+            avatar: AvatarImg
         }
     }
 })]
+console.log(AvatarImg)
 
 export const Light: Story = {
     args: {}
@@ -50,7 +52,7 @@ Light.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({
             country: Countries.Russia,
             currency: Currencies.RUB,
             username: 'admin',
-            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv4OhN9ea9I-WbG-XlXGN21eEzLlr5HbCIzg&usqp=CAU'
+            avatar: AvatarImg
         }
     }
 })]

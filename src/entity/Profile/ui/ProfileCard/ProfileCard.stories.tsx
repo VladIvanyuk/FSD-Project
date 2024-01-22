@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { Countries } from 'entity/Country';
 import { Currencies } from 'entity/Currency';
+import AvatarImg from '../../../../shared/assets/tests/storybook.jpg'
 
 const meta: Meta<typeof ProfileCard> = {
     title: 'entity/ProfileCard',
@@ -12,7 +13,6 @@ const meta: Meta<typeof ProfileCard> = {
     },
     tags: ['autodocs']
 };
-
 export default meta;
 type Story = StoryObj<typeof ProfileCard>;
 
@@ -26,7 +26,7 @@ export const Primary: Story = {
             country: Countries.Russia,
             currency: Currencies.RUB,
             username: 'admin',
-            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv4OhN9ea9I-WbG-XlXGN21eEzLlr5HbCIzg&usqp=CAU'
+            avatar: AvatarImg
         }
     }
 };
