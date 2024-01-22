@@ -14,13 +14,15 @@ interface IProfilePageProps {
 export const ProfilePage = memo((props: IProfilePageProps) => {
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
     const dispatch = useAppDispatch();
-
     useEffect(() => {
-        addReducer({
-            profile: editableProfileCardReducer
-        })
+        console.log(__PROJECT__)
+        if (__PROJECT__ !== 'storybook') {
+            addReducer({
+                profile: editableProfileCardReducer
+            })
 
-        dispatch(fetchProfileData()).catch(console.log);
+            dispatch(fetchProfileData()).catch(console.log);
+        }
 
         return () => {
             deleteReducer(['profile'])

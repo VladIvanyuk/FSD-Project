@@ -9,8 +9,9 @@ export interface TBuildPaths {
 export interface IBuildOptions {
   mode: TBuildMode
   paths: TBuildPaths
-  IS_DEV: boolean
+  __IS_DEV__: boolean
   PORT: number
+  project: 'storybook' | 'frontend' | 'jest'
 }
 
 export interface IBuildEnv {

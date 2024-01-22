@@ -5,7 +5,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import webpack from 'webpack';
 import { TBuildPaths } from './types/config';
 
-export const buildPlugins = (paths: TBuildPaths, IS_DEV: boolean): webpack.WebpackPluginInstance[] => {
+export const buildPlugins = (paths: TBuildPaths, __IS_DEV__: boolean, project: string): webpack.WebpackPluginInstance[] => {
     const plugins = [
         new HtmlWebpackPlugin({
         // шаблон страницы для build/index.html
@@ -17,10 +17,11 @@ export const buildPlugins = (paths: TBuildPaths, IS_DEV: boolean): webpack.Webpa
             chunkFilename: 'css/[name].[contenthash:8].css'
         }),
         new webpack.DefinePlugin({
-            IS_DEV: JSON.stringify(IS_DEV)
+            __IS_DEV__: JSON.stringify(__IS_DEV__),
+            __PROJECT__: JSON.stringify(project)
         })];
 
-    if (IS_DEV) {
+    if (__IS_DEV__) {
         plugins.push(
             new ReactRefreshWebpackPlugin({
                 overlay: false

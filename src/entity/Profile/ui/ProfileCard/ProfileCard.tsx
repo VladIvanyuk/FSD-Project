@@ -6,7 +6,7 @@ import { Loader } from 'shared/ui'
 import { Input } from 'shared/ui/Input/Input'
 import { IProfile } from 'entity/Profile/model/types/profile'
 import { classNames } from 'helpers/classNames/classNames'
-import { Avatar } from 'shared/ui/Avatart/Avatar'
+import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { CurrencySelect } from 'entity/Currency'
 import { CountrySelect } from 'entity/Country'
 
