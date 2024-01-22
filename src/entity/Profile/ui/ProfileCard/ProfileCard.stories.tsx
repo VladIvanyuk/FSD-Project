@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { Countries } from 'entity/Country';
 import { Currencies } from 'entity/Currency';
-import { Avatar } from 'shared/assets'
 
 const meta: Meta<typeof ProfileCard> = {
     title: 'entity/ProfileCard',
@@ -27,7 +26,7 @@ export const Primary: Story = {
             country: Countries.Russia,
             currency: Currencies.RUB,
             username: 'admin',
-            avatar: Avatar
+            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv4OhN9ea9I-WbG-XlXGN21eEzLlr5HbCIzg&usqp=CAU'
         }
     }
 };

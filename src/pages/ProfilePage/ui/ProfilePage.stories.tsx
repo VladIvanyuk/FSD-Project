@@ -5,7 +5,6 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { StoreDecorator } from 'shared/config/storybook/StoreDectorator/StoreDecorator';
 import { Countries } from 'entity/Country';
 import { Currencies } from 'entity/Currency';
-import { Avatar } from 'shared/assets';
 import { ProfilePage } from './ProfilePage';
 
 const meta: Meta<typeof ProfilePage> = {
@@ -33,7 +32,7 @@ Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
             country: Countries.Russia,
             currency: Currencies.RUB,
             username: 'admin',
-            avatar: Avatar
+            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv4OhN9ea9I-WbG-XlXGN21eEzLlr5HbCIzg&usqp=CAU'
         }
     }
 })]
@@ -51,7 +50,7 @@ Light.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({
             country: Countries.Russia,
             currency: Currencies.RUB,
             username: 'admin',
-            avatar: Avatar
+            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv4OhN9ea9I-WbG-XlXGN21eEzLlr5HbCIzg&usqp=CAU'
         }
     }
 })]

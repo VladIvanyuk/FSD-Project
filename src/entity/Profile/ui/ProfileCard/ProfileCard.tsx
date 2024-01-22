@@ -19,8 +19,6 @@ interface IProfileCardProps {
   onEditHandler: (value: string, name: string) => void
 }
 
-const AVATAR_URL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv4OhN9ea9I-WbG-XlXGN21eEzLlr5HbCIzg&usqp=CAU';
-
 export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLoading, onEditHandler }) => {
     const { t } = useTranslation();
 
@@ -42,7 +40,7 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
     return (
         <div className={cls.ProfileCard}>
             <div className={cls.avatarWrapper}>
-                <Avatar size={70} src={__PROJECT__ !== 'storybook' ? form?.avatar : AVATAR_URL} />
+                <Avatar size={70} src={form?.avatar} />
             </div>
             <div className={cls.profileWrapper}>
                 <Input
