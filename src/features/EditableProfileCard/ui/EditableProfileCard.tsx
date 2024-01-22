@@ -29,44 +29,44 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = () => {
     const onChangeInfo = useCallback((name: string, value: string) => {
         switch (name) {
         case 'firstname':
-            dispatch(editableProfileCardActions.updateProfile({
+            dispatch(editableProfileCardActions.updateProfileForm({
                 firstname: value
             }))
             break;
 
         case 'secondname':
-            dispatch(editableProfileCardActions.updateProfile({
+            dispatch(editableProfileCardActions.updateProfileForm({
                 secondname: value
             }))
             break;
 
         case 'age':
-            dispatch(editableProfileCardActions.updateProfile({
+            dispatch(editableProfileCardActions.updateProfileForm({
                 age: value
             }))
             break;
         case 'city':
-            dispatch(editableProfileCardActions.updateProfile({
+            dispatch(editableProfileCardActions.updateProfileForm({
                 city: value
             }))
             break;
         case 'avatar':
-            dispatch(editableProfileCardActions.updateProfile({
+            dispatch(editableProfileCardActions.updateProfileForm({
                 avatar: value
             }))
             break;
         case 'username':
-            dispatch(editableProfileCardActions.updateProfile({
+            dispatch(editableProfileCardActions.updateProfileForm({
                 username: value
             }))
             break;
         case 'currency':
-            dispatch(editableProfileCardActions.updateProfile({
+            dispatch(editableProfileCardActions.updateProfileForm({
                 currency: value as Currencies
             }))
             break;
         case 'country':
-            dispatch(editableProfileCardActions.updateProfile({
+            dispatch(editableProfileCardActions.updateProfileForm({
                 country: value as Countries
             }))
             break;

@@ -19,7 +19,7 @@ export const editableProfileCardSlice = createSlice({
             state.readonly = action.payload
         },
 
-        updateProfile: (state, action: PayloadAction<IProfile>) => {
+        updateProfileForm: (state, action: PayloadAction<IProfile>) => {
             state.form = {
                 ...state.form,
                 ...action.payload
