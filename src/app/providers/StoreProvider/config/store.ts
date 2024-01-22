@@ -2,7 +2,7 @@ import { CombinedState, Reducer, ReducersMapObject, configureStore } from '@redu
 import { IStateSchema } from './StateSchema'
 import { userReducer } from 'entity/User'
 import { createReducerManager } from './reducerManaget'
-import { $api } from 'shared/api/api'
+import $api from 'shared/api/api'
 
 export const createReduxStore = (
     initialState?: IStateSchema,

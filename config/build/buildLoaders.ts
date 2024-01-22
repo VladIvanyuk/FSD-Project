@@ -4,7 +4,7 @@ import { buildCssLoader } from './loaders/buildCssLoaders';
 import { buildSvgLoader } from './loaders/buildSvgLoader';
 
 export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
-    const { IS_DEV } = options;
+    const { __IS_DEV__ } = options;
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -17,7 +17,7 @@ export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
         type: 'asset/resource'
     }
 
-    const cssLoader = buildCssLoader(IS_DEV);
+    const cssLoader = buildCssLoader(__IS_DEV__);
 
     const babelLoader = {
         test: /\.(js|ts|tsx)$/,

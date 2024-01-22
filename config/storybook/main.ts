@@ -25,7 +25,8 @@ const config: StorybookConfig = {
         }
 
         config.plugins.push((new DefinePlugin({
-            IS_DEV: JSON.stringify(true)
+            __IS_DEV__: JSON.stringify(true),
+            __PROJECT__: JSON.stringify('storybook')
         })))
 
         const rules = config.module.rules;

@@ -6,4 +6,5 @@ declare module '*.jpeg';
 declare module '*.gif';
 declare module '*.d.ts';
 
-declare const IS_DEV: boolean;
+declare const __IS_DEV__: boolean;
+declare const __PROJECT__: 'storybook' | 'frontend' | 'jest';

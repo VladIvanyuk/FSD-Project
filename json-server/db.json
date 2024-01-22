@@ -19,15 +19,14 @@
       "password": "123"
     }
   ],
-  "profile": 
-    {
-      "firstname": "Влад",
-      "lastname": "Иванюк",
-      "age": 29,
-      "currency": "RUB",
-      "country": "Russia",
-      "city": "Vladivostok",
-      "username": "admin",
-      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
-    }
+  "profile": {
+    "firstname": "Влад",
+    "secondname": "Иванюк",
+    "age": "29",
+    "currency": "USD",
+    "country": "Belarus",
+    "city": "Владивосток",
+    "username": "admin",
+    "avatar": "https://marketplace.canva.com/EAEju3jet6c/2/0/1600w/canva-%D1%81%D0%B8%D0%BD%D0%B8%D0%B9-%D0%B8-%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9-%D1%87%D0%B8%D1%81%D1%82%D1%8B%D0%B9-%D0%BC%D0%B8%D0%BD%D0%B8%D0%BC%D0%B0%D0%BB%D0%B8%D0%B7%D0%BC-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B4%D0%BB%D1%8F-%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8F-%D0%B2-twitch-Gfcd-jH2ftc.jpg"
+  }
 }

@@ -11,14 +11,15 @@ export default (env: IBuildEnv): webpack.Configuration => {
         src: path.resolve(__dirname, 'src')
     };
     const mode = env.mode || 'development';
-    const IS_DEV = mode === 'development';
+    const __IS_DEV__ = mode === 'development';
     const PORT = env.PORT || 3000;
 
     const config = buildWebpackConfig({
         mode,
         paths,
-        IS_DEV,
-        PORT
+        __IS_DEV__,
+        PORT,
+        project: 'frontend'
     });
     return config;
 };

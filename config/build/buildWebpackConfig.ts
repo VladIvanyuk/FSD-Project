@@ -8,7 +8,7 @@ import { buildDevServer } from './buildDevServer';
 export const buildWebpackConfig = (
     options: IBuildOptions
 ): webpack.Configuration => {
-    const { paths, mode, IS_DEV } = options;
+    const { paths, mode, __IS_DEV__, project } = options;
     return {
         mode,
         entry: paths.entry,
@@ -17,14 +17,14 @@ export const buildWebpackConfig = (
             path: paths.build,
             clean: true
         },
-        plugins: buildPlugins(paths, IS_DEV),
+        plugins: buildPlugins(paths, __IS_DEV__, project),
         module: {
             rules: buildLoaders(options)
         },
         resolve: buildResolvers(options),
 
         // после сборки, при наличии ошибок в коде, показывает в каком именно файле ошибка (https://webpack.js.org/guides/development/#using-source-maps)
-        devtool: IS_DEV ? 'inline-source-map' : undefined,
-        devServer: IS_DEV ? buildDevServer(options) : undefined
+        devtool: __IS_DEV__ ? 'inline-source-map' : undefined,
+        devServer: __IS_DEV__ ? buildDevServer(options) : undefined
     };
 };

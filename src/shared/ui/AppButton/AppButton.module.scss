@@ -39,6 +39,16 @@
     border: none;
 }
 
+.redButton {
+    background: none;
+    border: 1px solid var(--red-dark);
+}
+
+.greenButton {
+    background: none;
+    border: 1px solid var(--green);
+}
+
 .square {
     padding: 0;
 }

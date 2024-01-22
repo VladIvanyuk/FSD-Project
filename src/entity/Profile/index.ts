@@ -1,4 +1,3 @@
 export type { IProfile, IProfileSchema } from './model/types/profile'
-export { profileActions, profileReducer } from './model/slice/profileSlice'
-export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData'
 export { ProfileCard } from './ui/ProfileCard/ProfileCard'
+export { getProfileData } from '../../features/EditableProfileCard/model/selectors/getProfileData/getProfileData'

@@ -52,6 +52,7 @@ module.exports = {
         "semi": "off",
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/semi": "off",
+        "@typescript-eslint/naming-convention": "off",
         // "react/jsx-indent": [2, 4],
         "indent": ['error', 4],
         "no-unused-vars": "warn",
@@ -62,6 +63,7 @@ module.exports = {
         
     },
     "globals": {
-        IS_DEV: true
+        __IS_DEV__: true,
+        __PROJECT__: true
     },
 }
