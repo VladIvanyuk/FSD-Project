@@ -5,13 +5,15 @@ import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import './styles/index.scss';
 import { FC, Suspense, useEffect } from 'react';
-import { userActions } from 'entity/User';
+import { getUserInited, userActions } from 'entity/User';
 import { LOCALSTORAGE_USER_KEY } from 'shared/const/localstorage';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
 
 export const App: FC = () => {
     const { theme } = useTheme();
     const dispatch = useAppDispatch();
+    const inited = useSelector(getUserInited);
 
     useEffect(() => {
         const user = localStorage.getItem(LOCALSTORAGE_USER_KEY);
@@ -25,7 +27,7 @@ export const App: FC = () => {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    <AppRouter />
+                    {inited && <AppRouter />}
                 </div>
             </Suspense>
         </div>

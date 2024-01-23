@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import { IUserSchema } from '../types/user';
 
 const initialState: IUserSchema = {
-    authData: null
+    authData: null,
+    _inited: false
 }
 
 export const userSlice = createSlice({
@@ -16,6 +17,7 @@ export const userSlice = createSlice({
             if (action.payload) {
                 state.authData = JSON.parse(action.payload)
             }
+            state._inited = true;
         },
         logout: (state) => {
             state.authData = null;
