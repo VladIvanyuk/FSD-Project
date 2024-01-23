@@ -14,7 +14,7 @@ interface IProfilePageHeaderProps {
 
 export const ProfilePageHeader: FC<IProfilePageHeaderProps> = (props) => {
     const { className } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
     const readonly = useSelector(getProfileReadonly);
     const onEditHandler = (name: string) => {

@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { Select } from 'shared/ui/Select/Select'
 import { Countries } from '../../model/type/country'
+import { useTranslation } from 'react-i18next'
 
 interface ICountrySelectProps {
   className?: string
@@ -34,7 +35,8 @@ const options = [
 ]
 
 export const CountrySelect = memo(({ onChange, value, readonly }: ICountrySelectProps) => {
+    const { t } = useTranslation()
     return (
-        <Select label='Страна' readonly={readonly} selectName='country' value={value} onChange={onChange} options={options} />
+        <Select label={t('Страна')} readonly={readonly} selectName='country' value={value} onChange={onChange} options={options} />
     )
 })

@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { Select } from 'shared/ui/Select/Select'
 import { Currencies } from '../../model/type/currency'
+import { useTranslation } from 'react-i18next'
 
 interface ICurrencySelectProps {
   className?: string
@@ -26,7 +27,8 @@ const options = [
 ]
 
 export const CurrencySelect = memo(({ onChange, value, readonly }: ICurrencySelectProps) => {
+    const { t } = useTranslation();
     return (
-        <Select readonly={readonly} label='Валюта' selectName='currency' value={value} onChange={onChange} options={options} />
+        <Select readonly={readonly} label={t('Валюта')} selectName='currency' value={value} onChange={onChange} options={options} />
     )
 })

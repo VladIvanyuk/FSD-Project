@@ -1,3 +1,14 @@
 {
-    "Профиль": "Profile page"
+    "Профиль": "Profile page",
+    "Имя": "First name",
+    "Фамилия": "Second name",
+    "Имя пользователя": "Username",
+    "Город": "City",
+    "Возраст": "Age",
+    "Аватар": "Avatar",
+    "Редактировать": "Edit",
+    "Сохранить": "Save",
+    "Отмена": "Cancel",
+    "Произошла ошибка при загрузке профиля": "There was an error loading your profile",
+    "Попробуйте перезагрузить страницу": "Try reloading the page"
 }

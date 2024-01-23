@@ -20,7 +20,7 @@ interface IProfileCardProps {
 }
 
 export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLoading, onEditHandler }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('profile');
 
     if (isLoading) {
         return (
@@ -33,7 +33,7 @@ export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLo
     if (error) {
         return (
             <div className={cls.ProfileCard}>
-                <Text theme={TextTheme.ERROR} align={TextAlign.CENTER} title='Произошла ошибка при загрузке профиля' text='Попробуйте перезагрузить страницу' />
+                <Text theme={TextTheme.ERROR} align={TextAlign.CENTER} title={t('Произошла ошибка при загрузке профиля')} text={t('Попробуйте перезагрузить страницу')} />
             </div>
         )
     }

@@ -17,7 +17,6 @@ export const Sidebar = memo((props: ISidebarProps) => {
     const toggleCollapse = (): void => {
         setCollapsed((prev) => !prev)
     }
-    const [state, setState] = useState(0);
 
     const { className } = props;
     return (
@@ -43,8 +42,6 @@ export const Sidebar = memo((props: ISidebarProps) => {
                         collapsed={collapsed}
                         theme={AppLinkTheme.PRIMARY} />
                 ))}
-                <button onClick={() => { setState(state + 1); }}>CKLIC</button>
-
             </div>
             <div className={cls.switchers}>
                 <ThemeSwitcher className={classNames('', { [cls.margin]: !collapsed }, [])} />
