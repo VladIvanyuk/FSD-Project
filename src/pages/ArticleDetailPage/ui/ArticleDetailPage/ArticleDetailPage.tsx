@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import { classNames } from 'helpers/classNames/classNames';
 import cls from './ArticleDetailPage.module.scss';
+import { ArticleDetails } from 'entity/Article';
 
 interface IArticleDetailPageProps {
    className?: string
@@ -9,11 +9,10 @@ interface IArticleDetailPageProps {
 
 export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
     const { className } = props;
-    const { t } = useTranslation()
 
     return (
         <div className={classNames(cls.articleDetailPage, {}, [className])}>
-            {t('ARTICLE DETAIL')}
+            <ArticleDetails />
         </div>
     );
 }
