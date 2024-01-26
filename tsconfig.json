@@ -44,5 +44,8 @@
     "src",
     "config",
     "json-server",
+  ],
+  "exclude": [
+    ".fttemplates"
   ]
 }

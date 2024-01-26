@@ -8,6 +8,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticleById } from 'entity/Article/model/services/fetchArticleById/fetchArticleById';
 import { useSelector } from 'react-redux';
 import { getArticleData, getArticleError, getArticleIsLoading } from '../../model/selectors/getArticleData/getArticleData';
+import { Text, TextAlign } from 'shared/ui/Text/Text';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton/Skeleton';
 
 interface IArticleDetailsProps {
    className?: string
@@ -26,9 +28,17 @@ export const ArticleDetails = memo((props: IArticleDetailsProps) => {
     let content;
 
     if (isLoading) {
-        content = <div>Loading...</div>
+        content = (
+            <div className={cls.skeletonWrapper}>
+                <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
+                <Skeleton className={cls.title} width={300} height={32} />
+                <Skeleton className={cls.skeleton} width={600} height={24} />
+                <Skeleton className={cls.skeleton} width="80%" height={250} />
+                <Skeleton className={cls.skeleton} width="80%" height={250} />
+            </div>
+        )
     } else if (error) {
-        content = <div>Произошла ошибка</div>
+        content = <Text align={TextAlign.CENTER} title={t('Произошла ошибка')}/>
     } else {
         content = 'ARTICLE DATAAAAAAIL';
     }

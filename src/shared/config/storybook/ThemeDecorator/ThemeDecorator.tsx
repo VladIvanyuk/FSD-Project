@@ -3,7 +3,7 @@ import { Theme, ThemeProvider } from 'shared/config/themeContext';
 
 export const ThemeDecorator = (theme: Theme) => (StoryComponent: StoryFn) => (
     <ThemeProvider>
-        <div className={`app ${theme}`}>
+        <div style={{ width: '97vw' }} className={`app ${theme}`}>
             <StoryComponent />
         </div>
     </ThemeProvider>

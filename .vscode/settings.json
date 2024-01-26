@@ -9,4 +9,7 @@
     "eslint.validate": [
         "typescript"
     ],
+    "files.associations": {
+    "**/.fttemplates/**": "plaintext"
+    }
 }
