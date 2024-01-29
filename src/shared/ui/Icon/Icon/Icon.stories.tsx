@@ -1,4 +1,5 @@
 import { Icon } from './Icon';
+import { EyeIcon } from 'shared/assets';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -15,5 +16,7 @@ export default meta;
 type Story = StoryObj<typeof Icon>;
 
 export const Primary: Story = {
-    args: {}
+    args: {
+        Svg: EyeIcon
+    }
 };
