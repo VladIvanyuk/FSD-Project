@@ -7,6 +7,8 @@ import { AppButton, AppLinkTheme, ButtonTheme } from 'shared/ui'
 import { ButtonSize } from 'shared/ui/AppButton/AppButton'
 import { SidebarItemsList } from 'widgets/Sidebar/model/items'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
+import { useSelector } from 'react-redux'
+import { getUserAuthData } from 'entity/User'
 
 interface ISidebarProps {
   className?: string
@@ -17,9 +19,10 @@ export const Sidebar = memo((props: ISidebarProps) => {
     const toggleCollapse = (): void => {
         setCollapsed((prev) => !prev)
     }
-    const [state, setState] = useState(0);
 
     const { className } = props;
+    const auth = useSelector(getUserAuthData);
+
     return (
         <div
             data-testid='sidebar'
@@ -35,7 +38,7 @@ export const Sidebar = memo((props: ISidebarProps) => {
             </AppButton>
             <div className={cls.items}>
                 {SidebarItemsList.map((item) => (
-                    <SidebarItem
+                    (auth || !item.authOnly) && <SidebarItem
                         key={item.path}
                         path={item.path}
                         text={item.text}
@@ -43,7 +46,6 @@ export const Sidebar = memo((props: ISidebarProps) => {
                         collapsed={collapsed}
                         theme={AppLinkTheme.PRIMARY} />
                 ))}
-                <button onClick={() => { setState(state + 1); }}>CKLIC</button>
 
             </div>
             <div className={cls.switchers}>

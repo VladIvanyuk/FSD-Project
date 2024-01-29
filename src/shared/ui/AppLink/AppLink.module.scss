@@ -5,3 +5,9 @@
 .secondary {
     color: var(--inverted-secondary-color);
 }
+
+.AppLink {
+    &:hover {
+        opacity: 0.7;
+    }
+}
