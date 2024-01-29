@@ -1,4 +1,4 @@
-enum ArticleTypes {
+export enum ArticleTypes {
     IT = 'IT',
     DESIGN = 'DESIGN',
     SPORT = 'SPORT'
@@ -16,15 +16,18 @@ export interface IArticleBlockBase {
 }
 
 export interface IArticleCodeBlock extends IArticleBlockBase {
+    type: ArticleBlockTypes.CODE
     code: string
 }
 
 export interface IArticleTextBlock extends IArticleBlockBase {
-    title: string
+    type: ArticleBlockTypes.TEXT
+    title?: string
     paragraphs: string[]
 }
 
 export interface IArticleImageBlock extends IArticleBlockBase {
+    type: ArticleBlockTypes.IMAGE
     src: string
     title: string
 }
@@ -34,10 +37,10 @@ export interface IArticle {
     title: string
     subtitle: string
     img: string
-    views: number
+    views: string
     createdAt: string
     type: ArticleTypes[]
-    block: TArticleBlock[]
+    blocks: TArticleBlock[]
 }
 
 export type TArticleBlock = IArticleCodeBlock | IArticleImageBlock | IArticleTextBlock;

@@ -3,6 +3,14 @@
 }
 
 .avatar {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.articleAvatar {
+    display: block;
+    margin: 0 auto;
     margin-bottom: 30px;
 }
 
@@ -16,4 +24,14 @@
 
 .skeletonWrapper {
     padding: 20px;
+}
+
+.articleInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blocks {
+    padding: 25px 0;
 }

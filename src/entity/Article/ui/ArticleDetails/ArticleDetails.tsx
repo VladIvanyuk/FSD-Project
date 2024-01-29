@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'helpers/classNames/classNames';
 import cls from './ArticleDetails.module.scss';
@@ -8,12 +8,31 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticleById } from 'entity/Article/model/services/fetchArticleById/fetchArticleById';
 import { useSelector } from 'react-redux';
 import { getArticleData, getArticleError, getArticleIsLoading } from '../../model/selectors/getArticleData/getArticleData';
-import { Text, TextAlign } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton/Skeleton';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { CalendarIcon, EyeIcon } from 'shared/assets';
+import { Icon } from 'shared/ui/Icon/Icon/Icon';
+import { ArticleBlockTypes, TArticleBlock } from '../../model/types/article';
+import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 
 interface IArticleDetailsProps {
    className?: string
    id: string
+}
+
+const renderBlock = (articleBlock: TArticleBlock) => {
+    switch (articleBlock.type) {
+    case ArticleBlockTypes.CODE:
+        return <ArticleCodeBlockComponent block={articleBlock} />
+    case ArticleBlockTypes.TEXT:
+        return <ArticleTextBlockComponent block={articleBlock} />
+    case ArticleBlockTypes.IMAGE:
+        return <ArticleImageBlockComponent block={articleBlock} />
+    default: return null;
+    }
 }
 
 export const ArticleDetails = memo((props: IArticleDetailsProps) => {
@@ -23,7 +42,7 @@ export const ArticleDetails = memo((props: IArticleDetailsProps) => {
     const dispatch = useAppDispatch();
     const error = useSelector(getArticleError)
     const isLoading = useSelector(getArticleIsLoading)
-    const data = useSelector(getArticleData)
+    const article = useSelector(getArticleData)
 
     let content;
 
@@ -40,18 +59,38 @@ export const ArticleDetails = memo((props: IArticleDetailsProps) => {
     } else if (error) {
         content = <Text align={TextAlign.CENTER} title={t('Произошла ошибка')}/>
     } else {
-        content = 'ARTICLE DATAAAAAAIL';
+        content = (
+            <>
+                <Avatar size={200} src={article?.img} className={cls.articleAvatar} />
+                <Text title={article?.title} text={article?.subtitle} size={TextSize.L} />
+                <div className={cls.articleInfo}>
+                    <Icon Svg={EyeIcon} />
+                    <Text text={article?.views} />
+                </div>
+                <div className={cls.articleInfo}>
+                    <Icon Svg={CalendarIcon} />
+                    <Text text={article?.createdAt} />
+                </div>
+                <div className={cls.blocks}>
+                    {article?.blocks?.map(renderBlock)}
+                </div>
+            </>
+        )
     }
 
     useEffect(() => {
         addReducer({
             article: articleReducer
         })
-        dispatch(fetchArticleById(id)).catch(console.log)
+
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchArticleById(id)).catch(console.log)
+        }
 
         return () => {
             deleteReducer(['article'])
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
