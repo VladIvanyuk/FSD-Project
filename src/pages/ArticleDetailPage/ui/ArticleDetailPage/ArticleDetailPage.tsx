@@ -24,7 +24,7 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
 
     return (
         <div className={classNames(cls.articleDetailPage, {}, [className])}>
-            <ArticleDetails id={id} />
+            <ArticleDetails id={id || '1'} />
         </div>
     );
 }

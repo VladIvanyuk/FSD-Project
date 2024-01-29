@@ -1,42 +1,20 @@
-import { StoreDecorator } from 'shared/config/storybook/StoreDectorator/StoreDecorator';
-import { ArticleDetailPage } from './ArticleDetailPage';
+import { TestAsynkThunk } from 'shared/lib/tests/testAsyncThunk/testAsyncThunk';
+import { fetchArticleById } from './fetchArticleById';
 
-import type { Meta, StoryObj } from '@storybook/react';
-import { ArticleBlockTypes, ArticleTypes } from 'entity/Article';
-
-const meta: Meta<typeof ArticleDetailPage> = {
-    title: 'pages/ArticleDetailPage',
-    component: ArticleDetailPage,
-    parameters: {
-        router: {
-            path: '/articles/:id',
-            route: '/articles/1'
-        }
-    },
-    tags: ['autodocs']
-};
-
-export default meta;
-type Story = StoryObj<typeof ArticleDetailPage>;
-
-export const Primary: Story = {
-    args: {}
-};
-
-Primary.decorators = [StoreDecorator({
-    article: {
-        data: {
+describe('fetchArticleById.test', () => {
+    test('success fetch article data', async () => {
+        const article = {
             id: '1',
             title: 'Javascript news',
             subtitle: 'Что нового в JS за 2022 год?',
             img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
             views: '1022',
             createdAt: '26.02.2022',
-            type: [ArticleTypes.IT],
+            type: ['IT'],
             blocks: [
                 {
                     id: '1',
-                    type: ArticleBlockTypes.TEXT,
+                    type: 'TEXT',
                     title: 'Заголовок этого блока',
                     paragraphs: [
                         'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.',
@@ -46,12 +24,12 @@ Primary.decorators = [StoreDecorator({
                 },
                 {
                     id: '4',
-                    type: ArticleBlockTypes.CODE,
+                    type: 'CODE',
                     code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;'
                 },
                 {
                     id: '5',
-                    type: ArticleBlockTypes.TEXT,
+                    type: 'TEXT',
                     title: 'Заголовок этого блока',
                     paragraphs: [
                         'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.',
@@ -60,18 +38,18 @@ Primary.decorators = [StoreDecorator({
                 },
                 {
                     id: '2',
-                    type: ArticleBlockTypes.IMAGE,
+                    type: 'IMAGE',
                     src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
                     title: 'Рисунок 1 - скриншот сайта'
                 },
                 {
                     id: '3',
-                    type: ArticleBlockTypes.CODE,
+                    type: 'CODE',
                     code: "const path = require('path');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);"
                 },
                 {
                     id: '7',
-                    type: ArticleBlockTypes.TEXT,
+                    type: 'TEXT',
                     title: 'Заголовок этого блока',
                     paragraphs: [
                         'JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.',
@@ -80,13 +58,13 @@ Primary.decorators = [StoreDecorator({
                 },
                 {
                     id: '8',
-                    type: ArticleBlockTypes.IMAGE,
+                    type: 'IMAGE',
                     src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
                     title: 'Рисунок 1 - скриншот сайта'
                 },
                 {
                     id: '9',
-                    type: ArticleBlockTypes.TEXT,
+                    type: 'TEXT',
                     title: 'Заголовок этого блока',
                     paragraphs: [
                         'JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.'
@@ -94,5 +72,21 @@ Primary.decorators = [StoreDecorator({
                 }
             ]
         }
-    }
-})]
+
+        const thunk = new TestAsynkThunk(fetchArticleById);
+        thunk.api.get.mockReturnValue(Promise.resolve({ article }))
+        const result = await thunk.callThunk('1')
+
+        expect(thunk.api.get).toHaveBeenCalled();
+        expect(result.payload).toEqual(article)
+        expect(result.meta.requestStatus).toBe('fulfilled')
+    })
+
+    test('error fetch', async () => {
+        const thunk = new TestAsynkThunk(fetchArticleById);
+        thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }))
+        const result = await thunk.callThunk('1')
+
+        expect(result.meta.requestStatus).toBe('rejected')
+    })
+})

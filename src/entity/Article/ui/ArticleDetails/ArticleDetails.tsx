@@ -26,11 +26,11 @@ interface IArticleDetailsProps {
 const renderBlock = (articleBlock: TArticleBlock) => {
     switch (articleBlock.type) {
     case ArticleBlockTypes.CODE:
-        return <ArticleCodeBlockComponent block={articleBlock} />
+        return <ArticleCodeBlockComponent key={articleBlock.id} block={articleBlock} />
     case ArticleBlockTypes.TEXT:
-        return <ArticleTextBlockComponent block={articleBlock} />
+        return <ArticleTextBlockComponent key={articleBlock.id} block={articleBlock} />
     case ArticleBlockTypes.IMAGE:
-        return <ArticleImageBlockComponent block={articleBlock} />
+        return <ArticleImageBlockComponent key={articleBlock.id} block={articleBlock} />
     default: return null;
     }
 }
