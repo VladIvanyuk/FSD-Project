@@ -1,10 +1,12 @@
 import {
+    PayloadAction,
     createEntityAdapter,
     createSlice
 } from '@reduxjs/toolkit'
 import { IStateSchema } from 'app/providers/StoreProvider'
 import { IComment } from 'entity/Comment'
 import { IArticleDetailsCommentSchema } from '../types/articleDetailsCommentSchema'
+import { fetchCommentByArticleId } from '../services/fetchCommentByArticleId/fetchCommentByArticleId'
 
 const commentsAdapter = createEntityAdapter<IComment>({
     selectId: (comment) => comment.id
@@ -13,29 +15,26 @@ const commentsAdapter = createEntityAdapter<IComment>({
 const articleDetailsCommentsSlice = createSlice({
     name: 'articleDetailsCommentsSlice',
     initialState: commentsAdapter.getInitialState<IArticleDetailsCommentSchema>({
-        ids: ['1', '2'],
-        entities: {
-            1: {
-                id: '1',
-                text: 'comment 1',
-                user: {
-                    id: '1',
-                    username: '1'
-                }
-            },
-            2: {
-                id: '2',
-                text: 'comment 2',
-                user: {
-                    id: '2',
-                    username: '2'
-                }
-            }
-        },
+        ids: [],
+        entities: {},
         isLoading: false,
         error: undefined
     }),
-    reducers: {}
+    reducers: {},
+    extraReducers (builder) {
+        builder.addCase(fetchCommentByArticleId.pending, (state) => {
+            state.error = undefined;
+            state.isLoading = true;
+        })
+        builder.addCase(fetchCommentByArticleId.fulfilled, (state, action: PayloadAction<IComment[]>) => {
+            state.isLoading = false;
+            commentsAdapter.setAll(state, action.payload)
+        })
+        builder.addCase(fetchCommentByArticleId.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload
+        })
+    }
 })
 
 export const getArticleComments = commentsAdapter.getSelectors<IStateSchema>((state) => state.articleDetailsComments || commentsAdapter.getInitialState())

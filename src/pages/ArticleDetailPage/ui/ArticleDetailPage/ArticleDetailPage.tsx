@@ -10,6 +10,8 @@ import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/us
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import { useSelector } from 'react-redux';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { fetchCommentByArticleId } from 'pages/ArticleDetailPage/model/services/fetchCommentByArticleId/fetchCommentByArticleId';
 
 interface IArticleDetailPageProps {
    className?: string
@@ -20,6 +22,7 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
     const { id } = useParams();
     const { t } = useTranslation();
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
+    const dispatch = useAppDispatch()
     const comments = useSelector(getArticleComments.selectAll);
     const isLoading = useSelector(getArticleCommentsIsLoading)
 
@@ -28,6 +31,8 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
             addReducer({
                 articleDetailsComments: articleDetailsCommentsReducer
             })
+
+            dispatch(fetchCommentByArticleId(id)).catch(console.log)
         }
 
         return () => {
