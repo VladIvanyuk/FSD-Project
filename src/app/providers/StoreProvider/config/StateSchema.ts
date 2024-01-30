@@ -4,6 +4,7 @@ import { IArticleSchema } from 'entity/Article';
 import { IProfileSchema } from 'entity/Profile';
 import { IUserSchema } from 'entity/User';
 import { ILoginSchema } from 'features/AuthByUsername';
+import { IArticleDetailsCommentSchema } from 'pages/ArticleDetailPage';
 
 export interface IStateSchema {
     user: IUserSchema
@@ -12,6 +13,7 @@ export interface IStateSchema {
     loginForm?: ILoginSchema
     profile?: IProfileSchema
     article?: IArticleSchema
+    articleDetailsComments?: IArticleDetailsCommentSchema
 }
 
 export type TStateSchemaKeys = keyof IStateSchema;

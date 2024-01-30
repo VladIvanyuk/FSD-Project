@@ -13,7 +13,7 @@ interface ICommentCardProps {
 }
 
 export const CommentCard = memo((props: ICommentCardProps) => {
-    const { className, comment, isLoading = true } = props;
+    const { className, comment, isLoading } = props;
 
     if (isLoading) {
         return (

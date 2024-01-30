@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { classNames } from 'helpers/classNames/classNames';
 import cls from './ArticleDetailPage.module.scss';
 import { ArticleDetails } from 'entity/Article';
@@ -6,38 +6,35 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Text } from 'shared/ui/Text/Text';
 import { CommentList } from 'entity/Comment';
+import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/useDynamicReducerLoad';
+import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
+import { useSelector } from 'react-redux';
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 
 interface IArticleDetailPageProps {
    className?: string
 }
 
-const mockComm = [
-    {
-        id: '1',
-        text: 'some comment',
-        user: {
-            id: '1',
-            username: 'user1',
-            avatar: 'https://as2.ftcdn.net/v2/jpg/01/74/35/41/1000_F_174354171_dxcNdq4XMmARKT7E88NOLmdrv6BBSAww.jpg'
-
-        }
-    },
-    {
-        id: '2',
-        text: 'some comment 2',
-        user: {
-            id: '2',
-            username: 'user2',
-            avatar: 'https://img.freepik.com/premium-photo/sute-girl-hacker-with-laptop-avatar-cartoon-style-black-background-generated-ai_88188-3324.jpg'
-
-        }
-    }
-]
-
 export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
     const { className } = props;
     const { id } = useParams();
-    const { t } = useTranslation()
+    const { t } = useTranslation();
+    const { addReducer, deleteReducer } = useDynamicReducerLoad();
+    const comments = useSelector(getArticleComments.selectAll);
+    const isLoading = useSelector(getArticleCommentsIsLoading)
+
+    useEffect(() => {
+        if (__PROJECT__ !== 'storybook') {
+            addReducer({
+                articleDetailsComments: articleDetailsCommentsReducer
+            })
+        }
+
+        return () => {
+            deleteReducer(['articleDetailsComments'])
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     if (!id) {
         return (
@@ -51,7 +48,7 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
         <div className={classNames(cls.articleDetailPage, {}, [className])}>
             <ArticleDetails id={id} />
             <Text className={cls.commentsTitle} title={t('Комментарии')} />
-            <CommentList comments={mockComm} />
+            <CommentList isLoading={isLoading} comments={comments} />
         </div>
     );
 }

@@ -9,7 +9,7 @@ import { CommentCard } from '../CommentCard/CommentCard';
 interface ICommentListProps {
    className?: string
    comments: IComment[]
-   isLoading?: false
+   isLoading?: boolean
 }
 
 export const CommentList = memo((props: ICommentListProps) => {
