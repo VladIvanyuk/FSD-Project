@@ -6,6 +6,7 @@ import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/us
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { EditableProfileCard } from 'features/EditableProfileCard/ui/EditableProfileCard';
 import { editableProfileCardReducer, fetchProfileData } from 'features/EditableProfileCard';
+import { useParams } from 'react-router-dom';
 
 interface IProfilePageProps {
   className?: string
@@ -14,6 +15,7 @@ interface IProfilePageProps {
 export const ProfilePage = memo((props: IProfilePageProps) => {
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
     const dispatch = useAppDispatch();
+    const { id } = useParams();
     useEffect(() => {
         console.log(__PROJECT__)
         if (__PROJECT__ !== 'storybook') {
@@ -21,7 +23,9 @@ export const ProfilePage = memo((props: IProfilePageProps) => {
                 profile: editableProfileCardReducer
             })
 
-            dispatch(fetchProfileData()).catch(console.log);
+            if (id) {
+                dispatch(fetchProfileData(id)).catch(console.log);
+            }
         }
 
         return () => {
