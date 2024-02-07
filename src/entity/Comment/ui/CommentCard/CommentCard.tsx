@@ -5,6 +5,8 @@ import { IComment } from 'entity/Comment/model/types/comment';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Text } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton/Skeleton';
+import { AppLink, AppLinkTheme } from 'shared/ui';
+import { RoutePath } from 'shared/config/route/routeConfig';
 
 interface ICommentCardProps {
    className?: string
@@ -29,10 +31,10 @@ export const CommentCard = memo((props: ICommentCardProps) => {
 
     return (
         <div className={classNames(cls.commentCard, {}, [className])}>
-            <div className={cls.header}>
+            <AppLink to={RoutePath.profile + comment.user.id} className={cls.header} theme={AppLinkTheme.PRIMARY}>
                 {comment.user.avatar ? <Avatar size={30} src={comment.user.avatar} /> : null}
                 <Text text={comment.user.username} />
-            </div>
+            </AppLink>
             <p>{comment.text}</p>
         </div>
     );
