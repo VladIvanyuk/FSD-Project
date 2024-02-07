@@ -23,7 +23,7 @@ export const routeConfig: IRouteConfigProps[] = [
         authOnly: false
     },
     {
-        path: RoutePath[AppRoutes.PROFILE],
+        path: RoutePath[AppRoutes.PROFILE] + ':id',
         element: <ProfilePage />,
         authOnly: true
     },

@@ -3,7 +3,9 @@ import { AxiosInstance } from 'axios';
 import { IArticleSchema } from 'entity/Article';
 import { IProfileSchema } from 'entity/Profile';
 import { IUserSchema } from 'entity/User';
+import { IAddCommentFormSchema } from 'features/AddCommentForm';
 import { ILoginSchema } from 'features/AuthByUsername';
+import { IArticleDetailsCommentSchema } from 'pages/ArticleDetailPage';
 
 export interface IStateSchema {
     user: IUserSchema
@@ -12,6 +14,8 @@ export interface IStateSchema {
     loginForm?: ILoginSchema
     profile?: IProfileSchema
     article?: IArticleSchema
+    articleDetailsComments?: IArticleDetailsCommentSchema
+    addCommentForm?: IAddCommentFormSchema
 }
 
 export type TStateSchemaKeys = keyof IStateSchema;
