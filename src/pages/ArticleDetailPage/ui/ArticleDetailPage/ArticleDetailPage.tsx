@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect } from 'react';
+import { FC, Suspense, useCallback, useEffect } from 'react';
 import { classNames } from 'helpers/classNames/classNames';
 import cls from './ArticleDetailPage.module.scss';
 import { ArticleDetails } from 'entity/Article';
@@ -14,6 +14,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchCommentByArticleId } from 'pages/ArticleDetailPage/model/services/fetchCommentByArticleId/fetchCommentByArticleId';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { addCommentForArticle } from 'pages/ArticleDetailPage/model/services/addCommentForArticle/addCommentForArticle';
+import { LoaderPage } from 'widgets/LoaderPage/ui/LoaderPage';
 
 interface IArticleDetailPageProps {
    className?: string
@@ -59,7 +60,9 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
         <div className={classNames(cls.articleDetailPage, {}, [className])}>
             <ArticleDetails id={id} />
             <Text className={cls.commentsTitle} title={t('Комментарии')} />
-            <AddCommentForm onSendComment={onSendComment} />
+            <Suspense fallback={<LoaderPage />}>
+                <AddCommentForm onSendComment={onSendComment} />
+            </Suspense>
             <CommentList isLoading={isLoading} comments={comments} />
         </div>
     );
