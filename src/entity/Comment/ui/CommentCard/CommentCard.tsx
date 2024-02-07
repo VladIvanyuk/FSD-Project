@@ -28,7 +28,6 @@ export const CommentCard = memo((props: ICommentCardProps) => {
             </div>
         )
     }
-
     return (
         <div className={classNames(cls.commentCard, {}, [className])}>
             <AppLink to={RoutePath.profile + comment.user.id} className={cls.header} theme={AppLinkTheme.PRIMARY}>

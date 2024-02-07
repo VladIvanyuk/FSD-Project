@@ -33,7 +33,7 @@ export const ProfilePageHeader: FC<IProfilePageHeaderProps> = (props) => {
             break;
 
         case 'save':
-            dispatch(updateProfileData(profileData.id)).catch(console.log);
+            dispatch(updateProfileData()).catch(console.log);
             break;
         }
     }
