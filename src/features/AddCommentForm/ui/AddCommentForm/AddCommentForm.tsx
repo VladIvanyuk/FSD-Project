@@ -5,7 +5,7 @@ import cls from './AddCommentForm.module.scss';
 import { Input } from 'shared/ui/Input/Input';
 import { AppButton } from 'shared/ui';
 import { useSelector } from 'react-redux';
-import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/AddCommentFormSelectors';
+import { getAddCommentFormText } from '../../model/selectors/AddCommentFormSelectors';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentFormActions, AddCommentFormReducer } from '../../model/slice/AddCommentFormSlice';
 import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/useDynamicReducerLoad';
@@ -19,7 +19,6 @@ export const AddCommentForm = memo((props: IAddCommentFormProps) => {
     const { className, onSendComment } = props;
     const { t } = useTranslation();
     const text = useSelector(getAddCommentFormText);
-    const errror = useSelector(getAddCommentFormError);
     const dispatch = useAppDispatch();
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
 
@@ -48,7 +47,7 @@ export const AddCommentForm = memo((props: IAddCommentFormProps) => {
     return (
         <div className={classNames(cls.addCommentForm, {}, [className])}>
             <Input onChange={onCommentTextChange} value={text} placeholder='Add Comment' inputName='comment-text' />
-            <AppButton onClick={onSendHandler}>Отправить</AppButton>
+            <AppButton onClick={onSendHandler}>{t('Отправить комментарий')}</AppButton>
         </div>
     );
 })
