@@ -22,6 +22,7 @@ export const Sidebar = memo((props: ISidebarProps) => {
 
     const { className } = props;
     const auth = useSelector(getUserAuthData);
+    const id = auth?.id;
 
     return (
         <div
@@ -40,7 +41,7 @@ export const Sidebar = memo((props: ISidebarProps) => {
                 {SidebarItemsList.map((item) => (
                     (auth || !item.authOnly) && <SidebarItem
                         key={item.path}
-                        path={item.path}
+                        path={item.path === '/profile/' ? item.path + id : item.path}
                         text={item.text}
                         Icon={item.Icon}
                         collapsed={collapsed}
