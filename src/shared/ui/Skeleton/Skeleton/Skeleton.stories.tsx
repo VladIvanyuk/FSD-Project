@@ -31,15 +31,6 @@ export const Circle: Story = {
     }
 };
 
-export const NormalDark: Story = {
-    args: {
-        width: '100%',
-        height: 200
-    }
-};
-
-NormalDark.decorators = [ThemeDecorator(Theme.DARK)]
-
 export const CircleDark: Story = {
     args: {
         height: 100,
