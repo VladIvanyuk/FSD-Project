@@ -2,6 +2,7 @@ import { Countries } from 'entity/Country'
 import { Currencies } from 'entity/Currency'
 
 export interface IProfile {
+    id?: string
     firstname?: string
     secondname?: string
     age?: string
