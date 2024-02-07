@@ -12,10 +12,11 @@ import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/us
 
 interface IAddCommentFormProps {
    className?: string
+   onSendComment: (text: string) => void
 }
 
 export const AddCommentForm = memo((props: IAddCommentFormProps) => {
-    const { className } = props;
+    const { className, onSendComment } = props;
     const { t } = useTranslation();
     const text = useSelector(getAddCommentFormText);
     const errror = useSelector(getAddCommentFormError);
@@ -39,10 +40,15 @@ export const AddCommentForm = memo((props: IAddCommentFormProps) => {
         dispatch(AddCommentFormActions.setText(value))
     }, [dispatch])
 
+    const onSendHandler = useCallback(() => {
+        onCommentTextChange('', '');
+        onSendComment(text || '')
+    }, [onCommentTextChange, onSendComment, text])
+
     return (
         <div className={classNames(cls.addCommentForm, {}, [className])}>
             <Input onChange={onCommentTextChange} value={text} placeholder='Add Comment' inputName='comment-text' />
-            <AppButton>Отправить</AppButton>
+            <AppButton onClick={onSendHandler}>Отправить</AppButton>
         </div>
     );
 })

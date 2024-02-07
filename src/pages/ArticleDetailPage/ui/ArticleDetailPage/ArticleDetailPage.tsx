@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import { classNames } from 'helpers/classNames/classNames';
 import cls from './ArticleDetailPage.module.scss';
 import { ArticleDetails } from 'entity/Article';
@@ -13,6 +13,7 @@ import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchCommentByArticleId } from 'pages/ArticleDetailPage/model/services/fetchCommentByArticleId/fetchCommentByArticleId';
 import { AddCommentForm } from 'features/AddCommentForm';
+import { addCommentForArticle } from 'pages/ArticleDetailPage/model/services/addCommentForArticle/addCommentForArticle';
 
 interface IArticleDetailPageProps {
    className?: string
@@ -26,6 +27,10 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
     const dispatch = useAppDispatch()
     const comments = useSelector(getArticleComments.selectAll);
     const isLoading = useSelector(getArticleCommentsIsLoading)
+
+    const onSendComment = useCallback((text) => {
+        dispatch(addCommentForArticle(text)).catch(console.log)
+    }, [dispatch])
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -54,7 +59,7 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
         <div className={classNames(cls.articleDetailPage, {}, [className])}>
             <ArticleDetails id={id} />
             <Text className={cls.commentsTitle} title={t('Комментарии')} />
-            <AddCommentForm />
+            <AddCommentForm onSendComment={onSendComment} />
             <CommentList isLoading={isLoading} comments={comments} />
         </div>
     );
