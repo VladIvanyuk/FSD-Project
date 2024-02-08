@@ -15,6 +15,11 @@ export interface IArticleBlockBase {
     id: string
 }
 
+export enum ArticleListView {
+    LIST = 'LIST',
+    GRID = 'GRID',
+}
+
 export interface IArticleCodeBlock extends IArticleBlockBase {
     type: ArticleBlockTypes.CODE
     code: string
