@@ -21,7 +21,6 @@ export const ArticleListItem: FC<IArticleListItemProps> = (props) => {
                 <Card className={cls.card}>
                     <div className={cls.imgWrapper}>
                         <img className={cls.img} src={article.img} alt={article.title} />
-                        <Text className={cls.date} text={article.createdAt} />
                     </div>
                     <div className={cls.infoWrapper}>
                         <Text text={article.type.join('/')} className={cls.types} />
@@ -29,6 +28,7 @@ export const ArticleListItem: FC<IArticleListItemProps> = (props) => {
                         <Icon Svg={EyeIcon} />
                     </div>
                     <Text text={article.title} className={cls.title} />
+                    <Text className={cls.date} text={article.createdAt} />
                 </Card>
             </div>
         )
