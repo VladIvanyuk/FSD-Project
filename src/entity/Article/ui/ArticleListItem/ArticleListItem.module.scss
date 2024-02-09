@@ -71,6 +71,23 @@
     .textBlock {
         overflow: hidden;
         max-height: 250px;
+        margin-bottom: 40px;
+    }
+
+    .textBlockWrapper {
+        overflow: hidden;
+    }
+
+    .q {
+        position: absolute;
+        bottom: 102px;
+        left: 0;
+        right: 0;
+        height: 152px;
+    }
+
+    .grad {
+        background-image: linear-gradient(#eff5f628, #eff5f693, #eff5f6);
     }
 }
 

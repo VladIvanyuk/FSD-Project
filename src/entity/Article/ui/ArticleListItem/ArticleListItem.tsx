@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'helpers/classNames/classNames'
 import cls from './ArticleListItem.module.scss'
 import { ArticleListView, IArticle, IArticleTextBlock } from 'entity/Article/model/types/article'
@@ -57,8 +57,9 @@ export const ArticleListItem = memo((props: IArticleListItemProps) => {
                     <div className={cls.imageWrapper}>
                         <img src={article.img} alt={article.title} className={cls.img} />
                     </div>
-                    <div>
+                    <div className={cls.textBlockWrapper}>
                         {textBlock && <ArticleTextBlockComponent className={cls.textBlock} block={textBlock} />}
+                        <div className={`${cls.grad} ${cls.q}`}>&nbsp;</div>
                     </div>
                     <div className={cls.bigCardFooter}>
                         <AppLink theme={AppLinkTheme.SECONDARY} className={cls.readMore} to={article.id}>
