@@ -67,19 +67,24 @@
     .title {
 
     }
+
+    .textBlock {
+        overflow: hidden;
+        max-height: 250px;
+    }
 }
 
 .GRID {
-    flex: 1 1 16%;
+    flex: 0 1 21%;
+    text-decoration: none;
 
     .imgWrapper {
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         margin-bottom: 10px;
     }
 
     .img {
-        max-width: 200px;
         width: 100%;
     }
 

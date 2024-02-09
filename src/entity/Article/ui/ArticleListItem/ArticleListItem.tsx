@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { classNames } from 'helpers/classNames/classNames'
 import cls from './ArticleListItem.module.scss'
-import { ArticleListView, IArticle } from 'entity/Article/model/types/article'
+import { ArticleListView, IArticle, IArticleTextBlock } from 'entity/Article/model/types/article'
 import { Text, TextSize } from 'shared/ui/Text/Text'
 import { Icon } from 'shared/ui/Icon/Icon/Icon'
 import { EyeIcon } from 'shared/assets'
@@ -9,6 +9,7 @@ import { Card } from 'shared/ui/Card/Card'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { AppLink, AppLinkTheme } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 
 interface IArticleListItemProps {
   className?: string
@@ -16,12 +17,12 @@ interface IArticleListItemProps {
   view: ArticleListView
 }
 
-export const ArticleListItem: FC<IArticleListItemProps> = (props) => {
+export const ArticleListItem = memo((props: IArticleListItemProps) => {
     const { className, article, view } = props;
     const { t } = useTranslation();
     if (view === ArticleListView.GRID) {
         return (
-            <div className={classNames(cls.articleListItem, {}, [className, cls[view]])}>
+            <AppLink to={article.id} theme={AppLinkTheme.SECONDARY} className={classNames(cls.articleListItem, {}, [className, cls[view]])}>
                 <Card className={cls.card}>
                     <div className={cls.imgWrapper}>
                         <img className={cls.img} src={article.img} alt={article.title} />
@@ -34,9 +35,11 @@ export const ArticleListItem: FC<IArticleListItemProps> = (props) => {
                     <Text text={article.title} className={cls.title} />
                     <Text className={cls.date} text={article.createdAt} />
                 </Card>
-            </div>
+            </AppLink>
         )
     }
+
+    const textBlock = article.blocks.find((block) => block.type === 'TEXT') as IArticleTextBlock;
 
     return (
         <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
@@ -54,6 +57,9 @@ export const ArticleListItem: FC<IArticleListItemProps> = (props) => {
                     <div className={cls.imageWrapper}>
                         <img src={article.img} alt={article.title} className={cls.img} />
                     </div>
+                    <div>
+                        {textBlock && <ArticleTextBlockComponent className={cls.textBlock} block={textBlock} />}
+                    </div>
                     <div className={cls.bigCardFooter}>
                         <AppLink theme={AppLinkTheme.SECONDARY} className={cls.readMore} to={article.id}>
                             {t('Читать далее...')}
@@ -67,4 +73,4 @@ export const ArticleListItem: FC<IArticleListItemProps> = (props) => {
             </div>
         </div>
     )
-}
+})
