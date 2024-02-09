@@ -20,18 +20,18 @@ export const ArticleList = memo((props: IArticleListProps) => {
         view = ArticleListView.GRID
     } = props;
     const { t } = useTranslation()
-    const renderArticle = (article: IArticle) => {
+    const renderArticle = (article: IArticle, index: number) => {
         return (
             <ArticleListItem
                 article={article}
                 view={view}
-                key={article.id}
+                key={index}
             />
         )
     }
 
     return (
-        <div className={classNames(cls.articleListItem, {}, [className])}>
+        <div className={classNames(cls.articleList, {}, [className, cls[view]])}>
             {articles.length > 0
                 ? articles.map(renderArticle)
                 : <Text text={t('No articles')} />

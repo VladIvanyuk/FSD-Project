@@ -1,3 +1,86 @@
-.articleListItem {
+.LIST {
+    .ArticleListItem {
 
+    }
+
+    .card {
+        max-width: 198px;
+    }
+
+    .imgWrapper {
+
+    }
+
+    .img {
+        max-width: 200px;
+        width: 100%;
+    }
+
+    .date {
+
+    }
+
+    .infoWrapper {
+
+    }
+
+    .types {
+
+    }
+
+    .views {
+
+    }
+
+    .title {
+
+    }
+}
+
+.GRID {
+    flex: 1 1 16%;
+
+    .imgWrapper {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    .img {
+        max-width: 200px;
+        width: 100%;
+    }
+
+    .date {
+        position: absolute;
+        top: -23px;
+        right: -10px;
+    }
+
+    .infoWrapper {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .types {
+        margin-right: auto;
+    }
+
+    .types p {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 125px;
+    }
+
+    .views {
+
+    }
+
+    .title {
+
+    }
 }

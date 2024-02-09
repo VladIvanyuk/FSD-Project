@@ -1,3 +1,10 @@
-.articleList {
+.GRID {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 80px;
+}
 
+.ArticleList {
+    padding: 0 10px;
 }
