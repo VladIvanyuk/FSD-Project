@@ -5,6 +5,12 @@
     gap: 30px 80px;
 }
 
+.LIST {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .ArticleList {
     padding: 0 10px;
 }

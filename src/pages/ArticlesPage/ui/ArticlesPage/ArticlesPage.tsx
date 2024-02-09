@@ -9,9 +9,14 @@ const article = {
     id: '1',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
-    img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+    img: 'https://itproger.com/img/news/1540394188.jpg',
     views: '1022',
     createdAt: '26.02.2022',
+    user: {
+        id: '1',
+        username: 'Vlad Ivanyuk',
+        avatar: 'https://as2.ftcdn.net/v2/jpg/01/74/35/41/1000_F_174354171_dxcNdq4XMmARKT7E88NOLmdrv6BBSAww.jpg'
+    },
     type: [
         'IT',
         'POLITICS',
@@ -85,7 +90,7 @@ const articles = Array.from({ length: 10 }).map(() => article) as IArticle[]
 export const ArticlesPage: FC<IArticlesPageProps> = (props) => {
     return (
         <>
-            <ArticleList view={ArticleListView.GRID} articles={articles} />
+            <ArticleList view={ArticleListView.LIST} articles={articles} />
         </>
     );
 }

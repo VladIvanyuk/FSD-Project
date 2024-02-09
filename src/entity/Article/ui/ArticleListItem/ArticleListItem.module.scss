@@ -1,23 +1,52 @@
 .LIST {
+    flex: 1 1 100%;
+
     .ArticleListItem {
 
     }
 
     .card {
-        max-width: 198px;
+
+    }
+
+    .bigCardFooter {
+        display: flex;
     }
 
     .imgWrapper {
 
     }
 
-    .img {
-        max-width: 200px;
-        width: 100%;
+    .date {
+        margin-left: auto;
     }
 
-    .date {
+    .userAndDate {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
+    .img {
+        max-width: 1000px;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    .readMore {
+        padding: 5px 10px;
+        border-radius: 4px;
+        color: var(--primary-color);
+        display: block;
+        border: 1px solid var(--inverted-bg-color);
+        text-decoration: none;
+    }
+
+    .imageWrapper {
+        padding: 20px 0;
     }
 
     .infoWrapper {
@@ -29,7 +58,10 @@
     }
 
     .views {
-
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 5px;
     }
 
     .title {

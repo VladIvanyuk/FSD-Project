@@ -2,10 +2,13 @@ import { FC } from 'react'
 import { classNames } from 'helpers/classNames/classNames'
 import cls from './ArticleListItem.module.scss'
 import { ArticleListView, IArticle } from 'entity/Article/model/types/article'
-import { Text } from 'shared/ui/Text/Text'
+import { Text, TextSize } from 'shared/ui/Text/Text'
 import { Icon } from 'shared/ui/Icon/Icon/Icon'
 import { EyeIcon } from 'shared/assets'
 import { Card } from 'shared/ui/Card/Card'
+import { Avatar } from 'shared/ui/Avatar/Avatar'
+import { AppLink, AppLinkTheme } from 'shared/ui'
+import { useTranslation } from 'react-i18next'
 
 interface IArticleListItemProps {
   className?: string
@@ -15,6 +18,7 @@ interface IArticleListItemProps {
 
 export const ArticleListItem: FC<IArticleListItemProps> = (props) => {
     const { className, article, view } = props;
+    const { t } = useTranslation();
     if (view === ArticleListView.GRID) {
         return (
             <div className={classNames(cls.articleListItem, {}, [className, cls[view]])}>
@@ -36,7 +40,31 @@ export const ArticleListItem: FC<IArticleListItemProps> = (props) => {
 
     return (
         <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-            {article.title}
+            <div className={classNames(cls.articleListItem, {}, [className, cls[view]])}>
+                <Card className={cls.card}>
+                    <div className={cls.bigCardHeader}>
+                        <div className={cls.userAndDate}>
+                            <Avatar src={article.user.avatar} size={50} />
+                            <Text text={article.user.username} className={cls.user} />
+                            <Text text={article.createdAt} className={cls.date} />
+                        </div>
+                        <Text title={article.title} size={TextSize.L} className={cls.title} />
+                    </div>
+                    <Text text={article.type.join(' / ')} className={cls.types} />
+                    <div className={cls.imageWrapper}>
+                        <img src={article.img} alt={article.title} className={cls.img} />
+                    </div>
+                    <div className={cls.bigCardFooter}>
+                        <AppLink theme={AppLinkTheme.SECONDARY} className={cls.readMore} to={article.id}>
+                            {t('Читать далее...')}
+                        </AppLink>
+                        <div className={cls.views}>
+                            <Text text={article.views} className={cls.views} />
+                            <Icon Svg={EyeIcon} />
+                        </div>
+                    </div>
+                </Card>
+            </div>
         </div>
     )
 }
