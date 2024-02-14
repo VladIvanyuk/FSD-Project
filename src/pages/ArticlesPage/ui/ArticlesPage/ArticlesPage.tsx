@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 import { ArticleList, ArticleListView } from 'entity/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList';
@@ -6,6 +6,7 @@ import { articlesPageReducer, getArticles } from 'pages/ArticlesPage/model/slice
 import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/useDynamicReducerLoad';
 import { useSelector } from 'react-redux';
 import { getArticlesPageIsLoading } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import { ArticleViewSelector } from 'features/ArticleViewSelector/ui/ArticleViewSelector';
 
 interface IArticlesPageProps {
    className?: string
@@ -16,7 +17,14 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
     const isNotStorybook = __PROJECT__ !== 'storybook';
     const articles = useSelector(getArticles.selectAll);
-    const isLoading = useSelector(getArticlesPageIsLoading)
+    const isLoading = useSelector(getArticlesPageIsLoading);
+    const currentView = localStorage.getItem('view') as ArticleListView || ArticleListView.GRID;
+    const [view, setView] = useState(currentView)
+
+    const onClickHandler = (view: ArticleListView) => {
+        setView(view)
+        localStorage.setItem('view', view)
+    }
 
     useEffect(() => {
         if (isNotStorybook) {
@@ -34,7 +42,8 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
     }, [])
     return (
         <>
-            <ArticleList isLoading={isLoading} view={ArticleListView.GRID} articles={articles} />
+            <ArticleViewSelector onClickHandler={onClickHandler} />
+            <ArticleList isLoading={isLoading} view={view} articles={articles} />
         </>
     );
 })
