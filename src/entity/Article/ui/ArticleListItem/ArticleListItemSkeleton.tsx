@@ -5,12 +5,12 @@ import { ArticleListView } from '../../model/types/article'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton/Skeleton'
 import { Card } from 'shared/ui/Card/Card'
 
-interface IArticleListItemSceletonProps {
+interface IArticleListItemSkeletonProps {
   className?: string
   view?: ArticleListView
 }
 
-export const ArticleListItemSceleton: FC<IArticleListItemSceletonProps> = (props) => {
+export const ArticleListItemSkeleton: FC<IArticleListItemSkeletonProps> = (props) => {
     const { className, view = ArticleListView.LIST } = props;
     if (view === ArticleListView.GRID) {
         return (

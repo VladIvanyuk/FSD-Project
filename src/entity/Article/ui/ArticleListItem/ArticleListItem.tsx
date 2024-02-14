@@ -10,7 +10,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { AppLink, AppLinkTheme } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
-import { ArticleListItemSceleton } from './ArticleListItemSceleton'
+import { ArticleListItemSkeleton } from './ArticleListItemSkeleton'
 
 interface IArticleListItemProps {
   className?: string
@@ -25,7 +25,7 @@ export const ArticleListItem = memo((props: IArticleListItemProps) => {
 
     if (isLoading) {
         return (
-            <ArticleListItemSceleton view={view} />
+            <ArticleListItemSkeleton view={view} />
         )
     }
 
