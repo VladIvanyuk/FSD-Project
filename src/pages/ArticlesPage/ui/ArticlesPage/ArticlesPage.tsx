@@ -91,7 +91,7 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
     const [isLoading, setIsLoading] = useState(false);
     return (
         <>
-            <ArticleList isLoading={isLoading} view={ArticleListView.LIST} articles={articles} />
+            <ArticleList isLoading={isLoading} view={ArticleListView.GRID} articles={articles} />
         </>
     );
 })
