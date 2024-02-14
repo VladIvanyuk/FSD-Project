@@ -28,7 +28,7 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
         }
 
         return () => {
-            deleteReducer(['profile'])
+            deleteReducer(['articlesPage'])
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
