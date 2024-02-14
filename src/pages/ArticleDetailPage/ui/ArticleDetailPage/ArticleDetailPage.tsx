@@ -27,14 +27,15 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
     const dispatch = useAppDispatch()
     const comments = useSelector(getArticleComments.selectAll);
-    const isLoading = useSelector(getArticleCommentsIsLoading)
+    const isLoading = useSelector(getArticleCommentsIsLoading);
+    const isNotStorybook = __PROJECT__ !== 'storybook';
 
     const onSendComment = useCallback((text) => {
         dispatch(addCommentForArticle(text)).catch(console.log)
     }, [dispatch])
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
+        if (isNotStorybook) {
             addReducer({
                 articleDetailsComments: articleDetailsCommentsReducer
             })

@@ -42,7 +42,8 @@ export const ArticleDetails = memo((props: IArticleDetailsProps) => {
     const dispatch = useAppDispatch();
     const error = useSelector(getArticleError)
     const isLoading = useSelector(getArticleIsLoading)
-    const article = useSelector(getArticleData)
+    const article = useSelector(getArticleData);
+    const isNotStorybook = __PROJECT__ !== 'storybook';
 
     let content;
 
@@ -83,7 +84,7 @@ export const ArticleDetails = memo((props: IArticleDetailsProps) => {
             article: articleReducer
         })
 
-        if (__PROJECT__ !== 'storybook') {
+        if (isNotStorybook) {
             dispatch(fetchArticleById(id)).catch(console.log)
         }
 

@@ -16,9 +16,10 @@ export const ProfilePage = memo((props: IProfilePageProps) => {
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
     const dispatch = useAppDispatch();
     const { id } = useParams();
+    const isNotStorybook = __PROJECT__ !== 'storybook';
+
     useEffect(() => {
-        console.log(__PROJECT__)
-        if (__PROJECT__ !== 'storybook') {
+        if (isNotStorybook) {
             addReducer({
                 profile: editableProfileCardReducer
             })
