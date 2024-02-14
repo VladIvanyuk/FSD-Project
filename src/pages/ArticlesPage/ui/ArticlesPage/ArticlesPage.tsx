@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, memo, useState } from 'react';
 import { ArticleList, ArticleListView, IArticle } from 'entity/Article';
 
 interface IArticlesPageProps {
@@ -88,9 +88,10 @@ const article = {
 const articles = Array.from({ length: 10 }).map(() => article) as IArticle[]
 
 export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
+    const [isLoading, setIsLoading] = useState(false);
     return (
         <>
-            <ArticleList view={ArticleListView.LIST} articles={articles} />
+            <ArticleList isLoading={isLoading} view={ArticleListView.LIST} articles={articles} />
         </>
     );
 })

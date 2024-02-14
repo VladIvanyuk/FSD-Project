@@ -1,20 +1,8 @@
 .LIST {
     flex: 1 1 100%;
 
-    .ArticleListItem {
-
-    }
-
-    .card {
-
-    }
-
     .bigCardFooter {
         display: flex;
-    }
-
-    .imgWrapper {
-
     }
 
     .date {
@@ -45,27 +33,11 @@
         text-decoration: none;
     }
 
-    .imageWrapper {
-        padding: 20px 0;
-    }
-
-    .infoWrapper {
-
-    }
-
-    .types {
-
-    }
-
     .views {
         margin-left: auto;
         display: flex;
         align-items: center;
         gap: 5px;
-    }
-
-    .title {
-
     }
 
     .textBlock {
@@ -134,11 +106,4 @@
         width: 125px;
     }
 
-    .views {
-
-    }
-
-    .title {
-
-    }
 }

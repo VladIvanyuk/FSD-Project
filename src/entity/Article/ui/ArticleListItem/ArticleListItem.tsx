@@ -10,16 +10,25 @@ import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { AppLink, AppLinkTheme } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
+import { ArticleListItemSceleton } from './ArticleListItemSceleton'
 
 interface IArticleListItemProps {
   className?: string
   article: IArticle
   view: ArticleListView
+  isLoading?: boolean
 }
 
 export const ArticleListItem = memo((props: IArticleListItemProps) => {
-    const { className, article, view } = props;
+    const { className, article, view, isLoading } = props;
     const { t } = useTranslation();
+
+    if (isLoading) {
+        return (
+            <ArticleListItemSceleton view={view} />
+        )
+    }
+
     if (view === ArticleListView.GRID) {
         return (
             <AppLink to={article.id} theme={AppLinkTheme.SECONDARY} className={classNames(cls.articleListItem, {}, [className, cls[view]])}>

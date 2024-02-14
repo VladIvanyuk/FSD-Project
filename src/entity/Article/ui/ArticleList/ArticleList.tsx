@@ -17,12 +17,14 @@ export const ArticleList = memo((props: IArticleListProps) => {
     const {
         className,
         articles,
+        isLoading,
         view = ArticleListView.GRID
     } = props;
     const { t } = useTranslation()
     const renderArticle = (article: IArticle, index: number) => {
         return (
             <ArticleListItem
+                isLoading={isLoading}
                 article={article}
                 view={view}
                 key={index}
