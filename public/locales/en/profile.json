@@ -1,3 +1,11 @@
 {
-    "Профиль": "Profile page"
+    "Профиль": "Profile page",
+    "Имя": "Name",
+    "Фамилия": "Surname",
+    "Имя пользователя": "Username",
+    "Возраст": "Age",
+    "Город": "City",
+    "Аватар": "Avatar",
+    "Страна": "Country",
+    "Валюта": "Currency"
 }

@@ -20,7 +20,7 @@ interface IProfileCardProps {
 }
 
 export const ProfileCard: FC<IProfileCardProps> = ({ readonly, form, error, isLoading, onEditHandler }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('profile');
 
     if (isLoading) {
         return (
