@@ -18,7 +18,7 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
     const isNotStorybook = __PROJECT__ !== 'storybook';
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
-    const currentView = localStorage.getItem('view') as ArticleListView || ArticleListView.GRID;
+    const currentView = localStorage.getItem('view') as ArticleListView || ArticleListView.LIST;
     const [view, setView] = useState(currentView)
 
     const onClickHandler = (view: ArticleListView) => {
