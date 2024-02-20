@@ -7,6 +7,7 @@ import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { EditableProfileCard } from 'features/EditableProfileCard/ui/EditableProfileCard';
 import { editableProfileCardReducer, fetchProfileData } from 'features/EditableProfileCard';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page/Page';
 
 interface IProfilePageProps {
   className?: string
@@ -35,9 +36,9 @@ export const ProfilePage = memo((props: IProfilePageProps) => {
     }, [])
 
     return (
-        <div>
+        <Page>
             <ProfilePageHeader />
             <EditableProfileCard />
-        </div>
+        </Page>
     )
 })

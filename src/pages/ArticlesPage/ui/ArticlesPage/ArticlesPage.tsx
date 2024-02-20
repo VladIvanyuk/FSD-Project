@@ -7,6 +7,7 @@ import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/us
 import { useSelector } from 'react-redux';
 import { getArticlesPageIsLoading, getArticlesPageView } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { ArticleViewSelector } from 'features/ArticleViewSelector/ui/ArticleViewSelector';
+import { Page } from 'shared/ui/Page/Page';
 
 interface IArticlesPageProps {
    className?: string
@@ -41,9 +42,9 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <>
+        <Page>
             <ArticleViewSelector onClickHandler={onClickHandler} />
             <ArticleList isLoading={isLoading} view={view} articles={articles} />
-        </>
+        </Page>
     );
 })

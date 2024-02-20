@@ -16,13 +16,15 @@ export const AppRouter: FC = () => {
                                 key={el.path}
                                 path={el.path}
                                 element={
-                                    <div className="page-wrapper">{
-                                        !el.authOnly
-                                            ? el.element
-                                            : <RequireAuth>
-                                                {el.element}
-                                            </RequireAuth>
-                                    }</div>
+                                    <div className='content'>
+                                        {
+                                            !el.authOnly
+                                                ? el.element
+                                                : <RequireAuth>
+                                                    {el.element}
+                                                </RequireAuth>
+                                        }
+                                    </div>
                                 }
                             />
                         )
