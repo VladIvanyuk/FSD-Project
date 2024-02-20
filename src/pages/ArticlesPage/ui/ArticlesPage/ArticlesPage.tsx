@@ -1,11 +1,11 @@
-import { FC, memo, useEffect, useState } from 'react';
+import { FC, memo, useEffect } from 'react';
 import { ArticleList, ArticleListView } from 'entity/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList';
-import { articlesPageReducer, getArticles } from 'pages/ArticlesPage/model/slice/ArticlesPageSlice';
+import { articlesPageActions, articlesPageReducer, getArticles } from 'pages/ArticlesPage/model/slice/ArticlesPageSlice';
 import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/useDynamicReducerLoad';
 import { useSelector } from 'react-redux';
-import { getArticlesPageIsLoading } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import { getArticlesPageIsLoading, getArticlesPageView } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { ArticleViewSelector } from 'features/ArticleViewSelector/ui/ArticleViewSelector';
 
 interface IArticlesPageProps {
@@ -18,12 +18,10 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
     const isNotStorybook = __PROJECT__ !== 'storybook';
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
-    const currentView = localStorage.getItem('view') as ArticleListView || ArticleListView.LIST;
-    const [view, setView] = useState(currentView)
+    const view = useSelector(getArticlesPageView);
 
     const onClickHandler = (view: ArticleListView) => {
-        setView(view)
-        localStorage.setItem('view', view)
+        dispatch(articlesPageActions.setView(view))
     }
 
     useEffect(() => {
@@ -31,8 +29,10 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
             addReducer({
                 articlesPage: articlesPageReducer
             })
-
-            dispatch(fetchArticlesList()).catch(console.log);
+            dispatch(articlesPageActions.initState())
+            dispatch(fetchArticlesList({
+                page: 1
+            })).catch(console.log);
         }
 
         return () => {
