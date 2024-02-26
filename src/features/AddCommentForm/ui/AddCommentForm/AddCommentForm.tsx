@@ -21,9 +21,10 @@ export const AddCommentForm = memo((props: IAddCommentFormProps) => {
     const text = useSelector(getAddCommentFormText);
     const dispatch = useAppDispatch();
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
+    const isNotStorybook = __PROJECT__ !== 'storybook';
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
+        if (isNotStorybook) {
             addReducer({
                 addCommentForm: AddCommentFormReducer
             })

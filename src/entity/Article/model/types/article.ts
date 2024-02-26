@@ -1,3 +1,5 @@
+import { IUser } from 'entity/User'
+
 export enum ArticleTypes {
     IT = 'IT',
     DESIGN = 'DESIGN',
@@ -13,6 +15,11 @@ export enum ArticleBlockTypes {
 export interface IArticleBlockBase {
     type: ArticleBlockTypes
     id: string
+}
+
+export enum ArticleListView {
+    LIST = 'LIST',
+    GRID = 'GRID',
 }
 
 export interface IArticleCodeBlock extends IArticleBlockBase {
@@ -35,6 +42,7 @@ export interface IArticleImageBlock extends IArticleBlockBase {
 export interface IArticle {
     id: string
     title: string
+    user: IUser
     subtitle: string
     img: string
     views: string

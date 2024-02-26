@@ -7,13 +7,15 @@ interface ISkeletonProps {
    height: string | number
    width: string | number
    border?: string
+   marginB?: number
 }
 
-export const Skeleton: FC<ISkeletonProps> = ({ className, width, height, border }) => {
+export const Skeleton: FC<ISkeletonProps> = ({ className, width, height, border, marginB }) => {
     const styles: CSSProperties = {
         width,
         height,
-        borderRadius: border
+        borderRadius: border,
+        marginBottom: marginB
     }
     return (
         <div style={styles} className={classNames(cls.skeleton, {}, [className])}>

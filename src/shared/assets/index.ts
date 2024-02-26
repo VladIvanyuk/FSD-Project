@@ -8,6 +8,8 @@ import Avatar from './tests/storybook.jpg'
 import EyeIcon from './icons/eye.svg'
 import CalendarIcon from './icons/calendar.svg'
 import CopyIcon from './icons/copy.svg'
+import ListIcon from './icons/art-list.svg'
+import GridIcon from './icons/art-grid.svg'
 
 export {
     DarkThemeIcon,
@@ -19,5 +21,7 @@ export {
     Avatar,
     EyeIcon,
     CalendarIcon,
-    CopyIcon
+    CopyIcon,
+    ListIcon,
+    GridIcon
 }

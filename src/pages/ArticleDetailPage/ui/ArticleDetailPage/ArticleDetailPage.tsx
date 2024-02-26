@@ -15,6 +15,7 @@ import { fetchCommentByArticleId } from 'pages/ArticleDetailPage/model/services/
 import { AddCommentForm } from 'features/AddCommentForm';
 import { addCommentForArticle } from 'pages/ArticleDetailPage/model/services/addCommentForArticle/addCommentForArticle';
 import { LoaderPage } from 'widgets/LoaderPage/ui/LoaderPage';
+import { Page } from 'shared/ui/Page/Page';
 
 interface IArticleDetailPageProps {
    className?: string
@@ -27,14 +28,15 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
     const { addReducer, deleteReducer } = useDynamicReducerLoad();
     const dispatch = useAppDispatch()
     const comments = useSelector(getArticleComments.selectAll);
-    const isLoading = useSelector(getArticleCommentsIsLoading)
+    const isLoading = useSelector(getArticleCommentsIsLoading);
+    const isNotStorybook = __PROJECT__ !== 'storybook';
 
     const onSendComment = useCallback((text) => {
         dispatch(addCommentForArticle(text)).catch(console.log)
     }, [dispatch])
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
+        if (isNotStorybook) {
             addReducer({
                 articleDetailsComments: articleDetailsCommentsReducer
             })
@@ -57,13 +59,13 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
     }
 
     return (
-        <div className={classNames(cls.articleDetailPage, {}, [className])}>
+        <Page className={classNames(cls.articleDetailPage, {}, [className])}>
             <ArticleDetails id={id} />
             <Text className={cls.commentsTitle} title={t('Комментарии')} />
             <Suspense fallback={<LoaderPage />}>
                 <AddCommentForm onSendComment={onSendComment} />
             </Suspense>
             <CommentList isLoading={isLoading} comments={comments} />
-        </div>
+        </Page>
     );
 }

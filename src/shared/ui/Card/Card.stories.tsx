@@ -1,10 +1,10 @@
-import { ArticlesPage } from './ArticlesPage';
+import { Card } from './Card';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof ArticlesPage> = {
-    title: 'entity/ArticlesPage',
-    component: ArticlesPage,
+const meta: Meta<typeof Card> = {
+    title: 'entity/Card',
+    component: Card,
     parameters: {
         layout: 'centered'
     },
@@ -12,7 +12,7 @@ const meta: Meta<typeof ArticlesPage> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ArticlesPage>;
+type Story = StoryObj<typeof Card>;
 
 export const Primary: Story = {
     args: {}
