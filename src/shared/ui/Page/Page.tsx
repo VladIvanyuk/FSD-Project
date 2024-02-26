@@ -6,7 +6,7 @@ import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfinit
 interface IPageProps {
    className?: string
    children: ReactNode
-   onScrollEnd: () => void
+   onScrollEnd?: () => void
 }
 
 export const Page = memo((props: IPageProps) => {

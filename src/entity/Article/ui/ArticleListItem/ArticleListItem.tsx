@@ -10,24 +10,16 @@ import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { AppLink, AppLinkTheme } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
-import { ArticleListItemSkeleton } from './ArticleListItemSkeleton'
 
 interface IArticleListItemProps {
   className?: string
   article: IArticle
   view: ArticleListView
-  isLoading?: boolean
 }
 
 export const ArticleListItem = memo((props: IArticleListItemProps) => {
-    const { className, article, view, isLoading } = props;
+    const { className, article, view } = props;
     const { t } = useTranslation();
-
-    if (isLoading) {
-        return (
-            <ArticleListItemSkeleton view={view} />
-        )
-    }
 
     if (view === ArticleListView.GRID) {
         return (

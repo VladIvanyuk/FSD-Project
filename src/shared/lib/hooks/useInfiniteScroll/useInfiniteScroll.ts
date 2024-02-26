@@ -12,7 +12,7 @@ export const useInfiniteScroll = ({ callback, wrapperRef, triggerRef }: IUseInfi
         if (callback) {
             const options = {
                 root: wrapperRef.current,
-                rootMargin: '1px',
+                rootMargin: '10px',
                 threshold: 1
             }
 
