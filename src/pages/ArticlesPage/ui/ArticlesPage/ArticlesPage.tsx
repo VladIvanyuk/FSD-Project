@@ -5,7 +5,7 @@ import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticl
 import { articlesPageActions, articlesPageReducer, getArticles } from 'pages/ArticlesPage/model/slice/ArticlesPageSlice';
 import { useDynamicReducerLoad } from 'shared/lib/hooks/useDynamicReducerLoad/useDynamicReducerLoad';
 import { useSelector } from 'react-redux';
-import { getArticlesPageHasMore, getArticlesPageIsLoading, getArticlesPageNum, getArticlesPageView } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import { getArticlesInited, getArticlesPageHasMore, getArticlesPageIsLoading, getArticlesPageNum, getArticlesPageView } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { ArticleViewSelector } from 'features/ArticleViewSelector/ui/ArticleViewSelector';
 import { Page } from 'shared/ui/Page/Page';
 
@@ -21,7 +21,8 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
     const isLoading = useSelector(getArticlesPageIsLoading);
     const view = useSelector(getArticlesPageView);
     const page = useSelector(getArticlesPageNum);
-    const hasMore = useSelector(getArticlesPageHasMore)
+    const hasMore = useSelector(getArticlesPageHasMore);
+    const inited = useSelector(getArticlesInited);
 
     const onClickHandler = (view: ArticleListView) => {
         dispatch(articlesPageActions.setView(view))
@@ -37,7 +38,7 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
     }, [dispatch, hasMore, isLoading, page])
 
     useEffect(() => {
-        if (isNotStorybook) {
+        if (isNotStorybook && !inited) {
             addReducer({
                 articlesPage: articlesPageReducer
             })
