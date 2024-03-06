@@ -9,9 +9,11 @@
   "Войти": "Enter",
   "Выйти": "Logout",
   "О нас": "About us",
+  "Статьи": "Articles",
   "Профиль": "Profile",
   "Логин": "Login",
   "Пароль": "Password",
   "Форма авторизации": "Authorization form",
-  "Отправить комментарий": "Send comment"
+  "Отправить комментарий": "Send comment",
+  "Назад": "Back"
 }

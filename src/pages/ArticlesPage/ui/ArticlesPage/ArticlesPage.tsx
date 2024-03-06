@@ -15,7 +15,7 @@ interface IArticlesPageProps {
 
 export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
     const dispatch = useAppDispatch();
-    const { addReducer, deleteReducer } = useDynamicReducerLoad();
+    const { addReducer } = useDynamicReducerLoad();
     const isNotStorybook = __PROJECT__ !== 'storybook';
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
@@ -47,9 +47,6 @@ export const ArticlesPage: FC<IArticlesPageProps> = memo((props) => {
             })).catch(console.log);
         }
 
-        return () => {
-            deleteReducer(['articlesPage'])
-        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (

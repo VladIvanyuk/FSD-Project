@@ -16,6 +16,7 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { addCommentForArticle } from 'pages/ArticleDetailPage/model/services/addCommentForArticle/addCommentForArticle';
 import { LoaderPage } from 'widgets/LoaderPage/ui/LoaderPage';
 import { Page } from 'shared/ui/Page/Page';
+import { AppButton, ButtonTheme } from 'shared/ui';
 
 interface IArticleDetailPageProps {
    className?: string
@@ -60,6 +61,9 @@ export const ArticleDetailPage: FC<IArticleDetailPageProps> = (props) => {
 
     return (
         <Page className={classNames(cls.articleDetailPage, {}, [className])}>
+            <AppButton theme={ButtonTheme.OUTLINE} className={cls.backBtn} onClick={() => { window.history.back(); }}>
+                {t('Назад')}
+            </AppButton>
             <ArticleDetails id={id} />
             <Text className={cls.commentsTitle} title={t('Комментарии')} />
             <Suspense fallback={<LoaderPage />}>
